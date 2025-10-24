@@ -1,0 +1,64 @@
+{
+  "brand": "Frota360",
+  "cta_demo": "Pedir demo",
+  "cta_demo_long": "Pedir demo gratuita",
+  "cta_whatsapp": "Falar no WhatsApp",
+  "hero_title": "Faça a gestão do seu TVDE de forma mais simples, rápida e rentável.",
+  "hero_subtitle": "Fuga das planilhas, painel 100% automatizado. Centraliza motoristas, viaturas e repasses — tudo num único painel preparado para facilitar a tua vida.",
+  "for_who": "Para quem é",
+  "benefits": "Benefícios principais",
+  "benefits_sub": "Venda resultado, não recurso técnico",
+  "how_it_works": "Como funciona",
+  "integrations": "Integrações",
+  "integrations_sub": "Conecta com as principais plataformas",
+  "cta_title": "Simplifica a tua operação TVDE",
+  "cta_sub": "Agenda uma demo de 20 minutos.",
+  "request_demo": "Solicitar demonstração",
+  "footer_desc": "Gestão TVDE simples, rápida e rentável.",
+  "footer_product": "Produto",
+  "footer_features": "Funcionalidades",
+  "footer_pricing": "Preços",
+  "footer_demo": "Demo",
+  "footer_contact": "Contacto",
+  "copyright": "© 2025 Frota360. Todos os direitos reservados.",
+  "personas": [
+    { "title": "Gestores de Frotas", "desc": "Precisam de controlo total e relatórios automáticos." },
+    { "title": "Operadores de Equipas", "desc": "Organizam turnos, escalas e comunicação." },
+    { "title": "Contabilidade & Financeiro", "desc": "Querem repasses certos e integração contábil." }
+  ],
+  "benefits_list": [
+    { "title": "Menos tempo perdido", "desc": "Automatiza tarefas administrativas." },
+    { "title": "Repasses certos, sem stress", "desc": "Cálculo automático por corrida e taxa." },
+    { "title": "Compliance garantido", "desc": "Alertas de documentos, inspeções e seguros." },
+    { "title": "Visão clara da operação", "desc": "Dashboards com performance e custos." },
+    { "title": "Equipa alinhada", "desc": "Permissões, turnos e app para motoristas." },
+    { "title": "Tudo integrado", "desc": "Uber, Bolt, contabilidade e muito mais." }
+  ],
+  "how_list": [
+    { "step": "1", "title": "Integra as plataformas", "desc": "Conecta Uber, Bolt e outras plataformas de TVDE." },
+    { "step": "2", "title": "Centraliza a gestão", "desc": "Todos os dados em um único painel intuitivo." },
+    { "step": "3", "title": "Automatiza repasses", "desc": "Cálculos automáticos e relatórios em tempo real." }
+  ],
+  "integrations_list": ["Uber", "Bolt", "MyPRIO", "Via Verde", "Cartrack"],
+  "integrations_names": {
+    "uber": "Uber",
+    "bolt": "Bolt",
+    "myprio": "MyPRIO",
+    "viaverde": "Via Verde",
+    "cartrack": "Cartrack"
+  },
+  "form": {
+    "title": "Solicitar demonstração",
+    "name": "Nome",
+    "email": "Email",
+    "phone": "Telefone / WhatsApp",
+    "company": "Empresa",
+    "fleet_size": "Tamanho da frota",
+    "fleet_size_options": ["1-5", "6-20", "21-50", "51+"],
+    "message": "Mensagem",
+    "submit": "Enviar",
+    "close": "Fechar",
+    "success": "Obrigado! Entraremos em contacto em breve.",
+    "error": "Não foi possível enviar. Tenta novamente."
+  }
+}

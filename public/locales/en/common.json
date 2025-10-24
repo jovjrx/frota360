@@ -1,0 +1,64 @@
+{
+  "brand": "Frota360",
+  "cta_demo": "Request demo",
+  "cta_demo_long": "Request free demo",
+  "cta_whatsapp": "Chat on WhatsApp",
+  "hero_title": "Manage your TVDE operation simpler, faster and more profitable.",
+  "hero_subtitle": "Ditch spreadsheets with a 100% automated dashboard. Centralize drivers, vehicles and payouts — all in one place.",
+  "for_who": "Who it's for",
+  "benefits": "Main benefits",
+  "benefits_sub": "Sell outcomes, not tech features",
+  "how_it_works": "How it works",
+  "integrations": "Integrations",
+  "integrations_sub": "Connect with the leading platforms",
+  "cta_title": "Simplify your TVDE operation",
+  "cta_sub": "Book a 20-minute demo.",
+  "request_demo": "Request a demo",
+  "footer_desc": "Simple, fast and profitable TVDE management.",
+  "footer_product": "Product",
+  "footer_features": "Features",
+  "footer_pricing": "Pricing",
+  "footer_demo": "Demo",
+  "footer_contact": "Contact",
+  "copyright": "© 2025 Frota360. All rights reserved.",
+  "personas": [
+    { "title": "Fleet Managers", "desc": "Need full control and automatic reports." },
+    { "title": "Operations Leads", "desc": "Organize shifts, schedules and communication." },
+    { "title": "Accounting & Finance", "desc": "Want accurate payouts and accounting integration." }
+  ],
+  "benefits_list": [
+    { "title": "Less time wasted", "desc": "Automate admin tasks." },
+    { "title": "Accurate payouts, no stress", "desc": "Automatic calculation per ride and fee." },
+    { "title": "Compliance guaranteed", "desc": "Alerts for documents, inspections and insurance." },
+    { "title": "Clear operational view", "desc": "Dashboards for performance and costs." },
+    { "title": "Aligned team", "desc": "Permissions, shifts and driver app." },
+    { "title": "All integrated", "desc": "Uber, Bolt, accounting and more." }
+  ],
+  "how_list": [
+    { "step": "1", "title": "Integrate platforms", "desc": "Connect Uber, Bolt and other TVDE platforms." },
+    { "step": "2", "title": "Centralize management", "desc": "All data in a single intuitive dashboard." },
+    { "step": "3", "title": "Automate payouts", "desc": "Automatic calculations and real-time reports." }
+  ],
+  "integrations_list": ["Uber", "Bolt", "MyPRIO", "Via Verde", "Cartrack"],
+  "integrations_names": {
+    "uber": "Uber",
+    "bolt": "Bolt",
+    "myprio": "MyPRIO",
+    "viaverde": "Via Verde",
+    "cartrack": "Cartrack"
+  },
+  "form": {
+    "title": "Request a demo",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone / WhatsApp",
+    "company": "Company",
+    "fleet_size": "Fleet size",
+    "fleet_size_options": ["1-5", "6-20", "21-50", "51+"],
+    "message": "Message",
+    "submit": "Send",
+    "close": "Close",
+    "success": "Thanks! We will get back to you soon.",
+    "error": "Could not send. Please try again."
+  }
+}

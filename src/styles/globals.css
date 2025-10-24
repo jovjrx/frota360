@@ -18,13 +18,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  /* Brand colors centralized here */
+  --brand1: #2563eb; /* default: blue-600 */
+  --brand2: #10b981; /* default: emerald-500 */
+  --base: #0f172a;   /* default: slate-900 */
+}
+
 @layer components {
   .container {
     @apply mx-auto px-4 max-w-7xl;
   }
 
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors;
+    @apply bg-brand1 hover:brightness-90 text-white font-medium py-3 px-6 rounded-lg transition-colors;
   }
 
   .section {
