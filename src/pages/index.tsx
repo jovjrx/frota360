@@ -144,15 +144,27 @@ export default function Home() {
 
       <main className="pt-0">
         {/* Hero (simplified) + Para quem é */}
-        <Section className="bg-white border-b border-slate-200">
+        <Section className="bg-white border-b border-slate-200 relative overflow-hidden">
+          {/* Decorative gradient orbs */}
+          <span aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-brand1/20 blur-3xl animate-gradient-float" />
+          <span aria-hidden className="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-brand2/20 blur-3xl animate-gradient-float" style={{ animationDelay: '0.8s' }} />
           <Container>
             <div className="grid lg:grid-cols-2 gap-12 w-full">
               <div className="max-w-3xl reveal">
               <Heading level={1} className="mb-4 leading-tight">{t('hero_title')}</Heading>
-              <p className="text-lg md:text-xl text-slate-700 mb-4">{t('hero_subtitle')}</p>
-              <Badge variant="soft" className="mb-4"><span aria-hidden>🎁</span><span>{t('cta_sub')}</span></Badge>
+              <div className="h-1 w-24 bg-brand-gradient rounded-full mb-5" aria-hidden />
+              <p className="text-lg md:text-xl text-slate-700 mb-6">{t('hero_subtitle')}</p>
+              <Badge variant="soft" className="mb-5"><span aria-hidden>✨</span><span>{t('cta_sub')}</span></Badge>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button onClick={openForm}>{t('request_demo')}</Button>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg border border-brand2 text-brand2 hover:bg-brand2/5 px-4 py-3 font-medium"
+                >
+                  WhatsApp
+                </a>
               </div>
               {/* Trust badges */}
               <ul className="mt-4 flex flex-wrap gap-2 text-sm text-slate-600">
@@ -163,40 +175,71 @@ export default function Home() {
                 ))}
               </ul>
               </div>
-              {/* Para quem é dentro da primeira section (lado direito no desktop) */}
-              <div className="reveal">
-                <Heading className="mb-4">{t('for_who')}</Heading>
-                 <ul className="space-y-4">
-                   {personas.map((item, i) => {
-                     const alt = i % 2 === 1;
-                     const cardColor = alt ? 'border-brand2 bg-brand2/10' : 'border-brand1 bg-brand1/10';
-                     const iconColor = alt ? 'bg-brand2/20 text-brand2' : 'bg-brand1/20 text-brand1';
-                     const dir = alt ? 'bg-gradient-to-br from-brand2/30 via-transparent to-brand1/30' : 'bg-gradient-to-br from-brand1/30 via-transparent to-brand2/30';
-                     return (
-                      <li key={i} className="flex items-start gap-3">
-                        <Card className={`w-full p-3 overflow-hidden ${cardColor}`}>
-                          <div className="relative isolate">
-                            {/* Animated gradient glow background */}
-                            <span aria-hidden className={`pointer-events-none absolute -inset-2 rounded-2xl blur-xl opacity-60 animate-gradient-float ${dir}`} style={{ animationDelay: `${i * 0.6}s` }} />
-                            <div className="relative flex items-start gap-3">
-                            <span className={`mt-0.5 inline-flex w-6 h-6 items-center justify-center rounded-full ring-1 ring-white/40 ${iconColor}`}>
-                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            </span>
-                            <div>
-                              <div className="font-semibold text-slate-900">{item.title}</div>
-                              <div className="text-slate-600 text-sm">{item.desc}</div>
-                            </div>
-                            </div>
-                          </div>
-                        </Card>
-                      </li>
-                     );
-                   })}
-                 </ul>
-               </div>
+              {/* Hero visual showcase */}
+              <div className="reveal relative">
+                <div className="relative w-full aspect-[4/3] md:aspect-square">
+                  {/* Card A */}
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 rotate-[-2deg] w-56 md:w-64 p-4 rounded-2xl bg-white border border-slate-200 shadow-md">
+                    <div className="h-2 w-16 bg-brand-gradient rounded-full mb-3" />
+                    <div className="h-20 rounded-xl bg-gradient-to-br from-brand1/15 to-brand2/15" />
+                    <div className="mt-3 h-2 w-24 bg-slate-200 rounded-full" />
+                  </div>
+                  {/* Card B */}
+                  <div className="absolute bottom-4 left-6 rotate-2 w-48 md:w-56 p-4 rounded-2xl bg-white border border-slate-200 shadow-md">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-brand1/20" />
+                      <div className="h-3 w-24 bg-slate-200 rounded-full" />
+                    </div>
+                    <div className="mt-3 h-2 w-full bg-slate-200 rounded-full" />
+                    <div className="mt-2 h-2 w-2/3 bg-slate-200 rounded-full" />
+                  </div>
+                  {/* Card C */}
+                  <div className="absolute bottom-10 right-4 rotate-[-1deg] w-48 md:w-56 p-4 rounded-2xl bg-white border border-slate-200 shadow-md">
+                    <div className="grid grid-cols-3 gap-2">
+                      {Array.from({ length: 6 }).map((_, i) => (
+                        <div key={i} className={`h-8 rounded-md ${i % 2 ? 'bg-brand2/15' : 'bg-brand1/15'}`} />
+                      ))}
+                    </div>
+                    <div className="mt-3 h-2 w-20 bg-slate-200 rounded-full" />
+                  </div>
+                </div>
+              </div>
             </div>
+          </Container>
+        </Section>
+
+        {/* Para quem é (mover para depois do hero para melhor foco no produto) */}
+        <Section className="bg-white">
+          <Container>
+            <Heading className="mb-4">{t('for_who')}</Heading>
+            <ul className="space-y-4">
+              {personas.map((item, i) => {
+                const alt = i % 2 === 1;
+                const cardColor = alt ? 'border-brand2 bg-brand2/10' : 'border-brand1 bg-brand1/10';
+                const iconColor = alt ? 'bg-brand2/20 text-brand2' : 'bg-brand1/20 text-brand1';
+                const dir = alt ? 'bg-gradient-to-br from-brand2/30 via-transparent to-brand1/30' : 'bg-gradient-to-br from-brand1/30 via-transparent to-brand2/30';
+                return (
+                  <li key={i} className="flex items-start gap-3">
+                    <Card className={`w-full p-3 overflow-hidden ${cardColor}`}>
+                      <div className="relative isolate">
+                        <span aria-hidden className={`pointer-events-none absolute -inset-2 rounded-2xl blur-xl opacity-60 animate-gradient-float ${dir}`} style={{ animationDelay: `${i * 0.6}s` }} />
+                        <div className="relative flex items-start gap-3">
+                          <span className={`mt-0.5 inline-flex w-6 h-6 items-center justify-center rounded-full ring-1 ring-white/40 ${iconColor}`}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                          <div>
+                            <div className="font-semibold text-slate-900">{item.title}</div>
+                            <div className="text-slate-600 text-sm">{item.desc}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </li>
+                );
+              })}
+            </ul>
           </Container>
         </Section>
 
@@ -378,7 +421,7 @@ export default function Home() {
       <footer className="relative border-t border-slate-200 bg-slate-50">
         <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-brand2/50 to-transparent" aria-hidden />
         <Container className="relative z-10 py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 mb-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Image src="/logo-horizontal.png" alt={t('brand')} width={160} height={48} className="h-12 w-auto" />
@@ -401,19 +444,30 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-slate-900">{t('footer_company', 'Empresa')}</h3>
-              <ul className="text-slate-600 text-sm space-y-2">
-                <li><a href="#why" className="hover:text-slate-900 transition-colors">{t('why_frota360.title')}</a></li>
-                <li><a href="/privacy" className="hover:text-slate-900 transition-colors">{t('privacy')}</a></li>
-                <li><a href="/terms" className="hover:text-slate-900 transition-colors">{t('terms')}</a></li>
-              </ul>
-            </div>
-
-            <div>
               <h3 className="font-semibold mb-4 text-slate-900">{t('footer_contact')}</h3>
-              <ul className="text-slate-600 text-sm space-y-2">
-                <li><a href={`mailto:${COMPANY_EMAIL}`} className="hover:text-slate-900 transition-colors">{COMPANY_EMAIL}</a></li>
-                <li><a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="hover:text-slate-900 transition-colors">{WHATSAPP_NUMBER}</a></li>
+              <ul className="text-slate-600 text-sm space-y-3">
+                <li>
+                  <a href={`mailto:${COMPANY_EMAIL}`} className="group flex items-center gap-3 hover:text-slate-900 transition-colors">
+                    <span className="inline-flex w-9 h-9 items-center justify-center rounded-full bg-brand-gradient text-white ring-1 ring-white/40 shadow-sm group-hover:brightness-110" aria-hidden>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.7"/>
+                        <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                    {COMPANY_EMAIL}
+                  </a>
+                </li>
+                <li>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 hover:text-slate-900 transition-colors">
+                    <span className="inline-flex w-9 h-9 items-center justify-center rounded-full bg-brand-gradient text-white ring-1 ring-white/40 shadow-sm group-hover:brightness-110" aria-hidden>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 12a8 8 0 1 1-14.59 5.06L4 21l3.94-1.41A8 8 0 1 1 20 12Z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M8.5 9.5c.3 2 1.9 3.6 3.9 3.9m0 0 .9-1.4m-4.8-2.5 1.4-.9" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                    {WHATSAPP_NUMBER}
+                  </a>
+                </li>
               </ul>
               <div className="mt-4">
                 <Button className="px-4 py-2 text-sm" onClick={openForm}>{t('footer_demo')}</Button>
