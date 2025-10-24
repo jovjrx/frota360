@@ -149,63 +149,68 @@ export default function Home() {
           }}
         />
       </Head>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white text-slate-900 border-b border-slate-200">
-        <div className="container flex items-center justify-between h-20">
-          <Image src="/logo-horizontal.png" alt={t('brand')} width={320} height={64} className="h-[64px] w-auto" />
-          <nav aria-label="Language selector" className="flex items-center gap-2">
-            {locales.map((lng) => (
-              <button
-                key={lng}
-                type="button"
-                onClick={() => handleLocaleChange(lng)}
-                title={lng.toUpperCase()}
-                aria-current={router.locale === lng ? 'true' : undefined}
-                className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors border ${router.locale === lng ? 'bg-slate-100 border-slate-300' : 'hover:bg-slate-50 border-transparent'}`}
-              >
-                <Image src={`/flags/${lng}.svg`} alt={lng} width={24} height={16} className="w-6 h-4" />
-                <span className="sr-only">{lng}</span>
-              </button>
-            ))}
-          </nav>
-        </div>
-      </header>
+      {/* Header integrated into hero (transparent) handled below */}
 
       <main className="pt-0">
         {/* Hero + Para quem é */}
         <section className="relative">
           <div className="absolute inset-0 pointer-events-none z-0">
             <Image src="/who.png" alt="" fill sizes="100vw" priority className="object-cover object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
+            {/* Soft white tint so the standard logo stays readable while background still shows */}
+            <div className="absolute inset-0 reveal bg-gradient-to-b from-white/60 via-white/40 to-white/20" />
           </div>
-          <div className="container pt-24 pb-24 min-h-[calc(100vh-80px)] relative z-10 flex items-center">
-            <div className="max-w-3xl reveal">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">{t('hero_title')}</h1>
+          {/* Integrated top bar (logo + language) */}
+          <div className="absolute top-4 left-0 right-0 z-20">
+            <div className="container h-24 flex items-center justify-between">
+              <Image src="/logo-horizontal.png" alt={t('brand')} width={340} height={64} className="h-16 w-auto reveal" style={{ transitionDelay: '80ms' }} />
+              <nav aria-label="Language selector" className="flex items-center gap-2">
+                {locales.map((lng, i) => (
+                  <button
+                    key={lng}
+                    type="button"
+                    onClick={() => handleLocaleChange(lng)}
+                    title={lng.toUpperCase()}
+                    aria-current={router.locale === lng ? 'true' : undefined}
+                    className={`reveal w-10 h-10 rounded-md flex items-center justify-center transition-colors border hover:bg-white/10 ${router.locale === lng ? 'bg-white/20 border-white/40' : 'border-white/10'}`}
+                    style={{ transitionDelay: `${150 + i * 90}ms` }}
+                  >
+                    <Image src={`/flags/${lng}.svg`} alt={lng} width={24} height={16} className="w-6 h-4" />
+                    <span className="sr-only">{lng}</span>
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </div>
+          <div className="container pt-28 pb-24 min-h-[100vh] relative z-10 flex items-start lg:items-center">
+            <div className="grid lg:grid-cols-2 gap-12 w-full">
+              <div className="max-w-3xl reveal">
+              <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight">{t('hero_title')}</h1>
               <p className="text-xl text-slate-200 mb-8">{t('hero_subtitle')}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="btn-primary" onClick={openForm}>
                   {t('request_demo')}
                 </button>
               </div>
-            </div>
-            {/* Para quem é dentro da primeira section */}
-            <div className="mt-20 max-w-3xl reveal">
-              <h2 className="text-4xl font-bold mb-6">{t('for_who')}</h2>
-              <ul className="space-y-4">
-                {personas.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex w-6 h-6 items-center justify-center rounded-full bg-brand1/20 text-brand1">
-                      {/* check icon */}
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <div>
-                      <div className="font-semibold">{item.title}</div>
-                      <div className="text-slate-300 text-sm">{item.desc}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              </div>
+              {/* Para quem é dentro da primeira section (lado direito no desktop) */}
+              <div className="reveal">
+                <h2 className="text-3xl font-bold mb-4">{t('for_who')}</h2>
+                <ul className="space-y-4">
+                  {personas.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/10">
+                      <span className="mt-0.5 inline-flex w-6 h-6 items-center justify-center rounded-full bg-brand1/20 text-brand1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <div>
+                        <div className="font-semibold">{item.title}</div>
+                        <div className="text-slate-300 text-sm">{item.desc}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -213,7 +218,7 @@ export default function Home() {
         
 
         {/* Benefits */}
-        <section className="section bg-white/10" ref={successRef as any}>
+  <section id="benefits" className="section bg-white/10" ref={successRef as any}>
           <div className="container">
             <h2 className="text-4xl font-bold mb-4 text-center">{t('benefits')}</h2>
             <p className="text-center text-slate-300 mb-16">{t('benefits_sub')}</p>
@@ -229,7 +234,7 @@ export default function Home() {
         </section>
 
         {/* How it Works */}
-        <section className="relative section">
+  <section id="how" className="relative section">
           <div className="absolute inset-0 z-0">
             <Image src="/how.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
@@ -251,7 +256,7 @@ export default function Home() {
         </section>
 
         {/* Integrations */}
-        <section className="section bg-white/10">
+  <section id="integrations" className="section bg-white/10">
           <div className="container">
             <h2 className="text-4xl font-bold mb-4 text-center">{t('integrations')}</h2>
             <p className="text-center text-slate-300 mb-16">{t('integrations_sub')}</p>
@@ -295,7 +300,7 @@ export default function Home() {
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-xl border border-white/10 bg-white/5 reveal">
                 <div className="flex items-center gap-3 mb-3">
-                  <Image src="/logos/conduz.svg" alt="Conduz.pt" width={36 * 3} height={36} className="h-9 w-auto" />
+                  <Image src="/logos/conduz.png" alt="Conduz.pt" width={36 * 3} height={36} className="h-9 w-auto" />
                   <div>
                     <div className="font-semibold">Conduz.pt</div>
                     <div className="text-xs text-slate-400">{t('success.industry')}</div>
@@ -360,35 +365,40 @@ export default function Home() {
       <footer className="relative border-t border-white/10 py-12">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image src="/hero.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/0" />
         </div>
         <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold mb-4">{t('brand')}</h3>
-              <p className="text-slate-400 text-sm">{t('footer_desc')}</p>
+            <div className=" items-start gap-3">
+              <Image src="/logo-site.png" alt={t('brand')} width={120} height={40} className="h-10 w-auto" />
+              <div>
+                <p className="text-slate-400 text-sm">{t('footer_desc')}</p>
+              </div>
             </div>
             <div>
               <h3 className="font-bold mb-4">{t('footer_product')}</h3>
               <ul className="text-slate-400 text-sm space-y-2">
-                <li><a href="#" className="hover:text-white transition-colors">{t('footer_features')}</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">{t('footer_pricing')}</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">{t('footer_demo')}</a></li>
+                <li><a href="#benefits" className="hover:text-white transition-colors">{t('footer_features')}</a></li>
+                <li><a href="#how" className="hover:text-white transition-colors">{t('integrations')}</a></li>
+                <li><button onClick={openForm} className="hover:text-white transition-colors">{t('footer_demo')}</button></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold mb-4">{t('footer_contact')}</h3>
               <ul className="text-slate-400 text-sm space-y-2">
                 <li><a href={`mailto:${COMPANY_EMAIL}`} className="hover:text-white transition-colors">{COMPANY_EMAIL}</a></li>
-                <li><a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="hover:text-white transition-colors">WhatsApp</a></li>
+                <li><a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="hover:text-white transition-colors">{WHATSAPP_NUMBER}</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-white/10 pt-8 text-center text-slate-400 text-sm">
             <p>{t('copyright')}</p>
+            <p className="mt-1 opacity-80">{t('footer_madeby', 'Um produto Alvorada Magistral')}</p>
           </div>
         </div>
       </footer>
+
+      
 
       {showForm && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4" role="dialog" aria-modal="true">
