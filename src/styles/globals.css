@@ -19,10 +19,10 @@ body {
 }
 
 :root {
-  /* Brand colors centralized here */
-  --brand1: #2563eb; /* default: blue-600 */
-  --brand2: #10b981; /* default: emerald-500 */
-  --base: #0f172a;   /* default: slate-900 */
+  /* Brand colors centralized here (fallbacks; .env overrides applied in _document.tsx) */
+  --brand1: #00b4d8; /* primary */
+  --brand2: #2d4663; /* secondary */
+  --base: #0f172a;   /* base */
 }
 
 @layer components {

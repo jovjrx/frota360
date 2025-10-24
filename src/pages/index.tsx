@@ -4,12 +4,14 @@ import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { COMPANY_EMAIL, WHATSAPP_NUMBER } from '@/config/site';
 import * as gtag from '@/utils/gtag';
 import * as fbq from '@/utils/fbpixel';
 
 export default function Home() {
   const { t } = useTranslation('common');
+  const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
@@ -22,6 +24,20 @@ export default function Home() {
     fleetSize: '',
     message: '',
   });
+  const locales = ['pt', 'en', 'es', 'it', 'fr'] as const;
+  const flags: Record<(typeof locales)[number], string> = {
+    pt: '🇵🇹',
+    en: '🇬🇧',
+    es: '🇪🇸',
+    it: '🇮🇹',
+    fr: '🇫🇷',
+  };
+  const handleLocaleChange = async (lng: (typeof locales)[number]) => {
+    if (router.locale === lng) return;
+    try {
+      await router.push(router.asPath, undefined, { locale: lng });
+    } catch { }
+  };
 
   const openForm = () => { setShowForm(true); setSuccess(null); setError(null); };
   const closeForm = () => { setShowForm(false); };
@@ -56,7 +72,7 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const sections: Array<{el: Element | null; label: string}> = [
+    const sections: Array<{ el: Element | null; label: string }> = [
       { el: offerRef.current, label: 'offer' },
       { el: successRef.current, label: 'success' }
     ];
@@ -83,64 +99,95 @@ export default function Home() {
         <meta property="og:image" content="/logo-fundo.png" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: t('brand'),
-            url: 'https://frota360.pt',
-            logo: '/logo-fundo.png',
-            sameAs: ['https://conduz.pt']
-          }) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: t('brand'),
+              url: 'https://frota360.pt',
+              logo: '/logo-fundo.png',
+              sameAs: ['https://conduz.pt']
+            })
+          }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: t('brand'),
-            url: 'https://frota360.pt'
-          }) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: t('brand'),
+              url: 'https://frota360.pt'
+            })
+          }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: (t('faq.items', { returnObjects: true }) as Array<{q:string; a:string}>).map((f) => ({
-              '@type': 'Question',
-              name: f.q,
-              acceptedAnswer: { '@type': 'Answer', text: f.a }
-            }))
-          }) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: (t('faq.items', { returnObjects: true }) as Array<{ q: string; a: string }>).map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a }
+              }))
+            })
+          }}
         />
       </Head>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-sm border-b border-white/10">
-        <div className="container flex items-center h-16">
-          <Image src="/logo-horizontal.png" alt={t('brand')} width={180} height={40} className="h-8 w-auto" />
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white text-slate-900 border-b border-slate-200">
+        <div className="container flex items-center justify-between h-24">
+          <Image src="/logo-horizontal.png" alt={t('brand')} width={405} height={90} className="h-[90px] w-auto" />
+          <nav aria-label="Language selector" className="flex items-center gap-2">
+            {locales.map((lng) => (
+              <button
+                key={lng}
+                type="button"
+                onClick={() => handleLocaleChange(lng)}
+                title={lng.toUpperCase()}
+                aria-current={router.locale === lng ? 'true' : undefined}
+                className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors border ${router.locale === lng ? 'bg-slate-100 border-slate-300' : 'hover:bg-slate-50 border-transparent'}`}
+              >
+                <Image src={`/flags/${lng}.svg`} alt={lng} width={24} height={16} className="w-6 h-4" />
+                <span className="sr-only">{lng}</span>
+              </button>
+            ))}
+          </nav>
         </div>
       </header>
 
-      <main className="pt-32">
+      <main className="pt-40">
         {/* Hero */}
-        <section className="container py-24">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">{t('hero_title')}</h1>
-            <p className="text-xl text-slate-300 mb-8">{t('hero_subtitle')}</p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="btn-primary" onClick={openForm}>
-                {t('request_demo')}
-              </button>
+        <section className="relative">
+          <div className="absolute inset-0 pointer-events-none -z-10">
+            <Image src="/hero.png" alt="" fill sizes="100vw" priority className="object-cover" aria-hidden="true" />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+          <div className="container py-24 min-h-[560px] flex items-center">
+            <div className="max-w-3xl">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">{t('hero_title')}</h1>
+              <p className="text-xl text-slate-200 mb-8">{t('hero_subtitle')}</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="btn-primary" onClick={openForm}>
+                  {t('request_demo')}
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Personas */}
-        <section className="section bg-white/5">
+        <section className="relative section">
+          <div className="absolute inset-0 -z-10">
+            <Image src="/who.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden="true" />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
           <div className="container">
             <h2 className="text-4xl font-bold mb-16 text-center">{t('for_who')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {personas.map((item, i) => (
-                <div key={i} className="p-8 rounded-xl border border-white/10 hover:border-blue-400 transition-colors">
+                <div key={i} className="p-8 rounded-xl border border-white/10 hover:border-brand1 transition-colors">
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className="text-slate-300">{item.desc}</p>
                 </div>
@@ -150,7 +197,7 @@ export default function Home() {
         </section>
 
         {/* Benefits */}
-  <section className="section bg-white/10" ref={successRef as any}>
+        <section className="section bg-white/10" ref={successRef as any}>
           <div className="container">
             <h2 className="text-4xl font-bold mb-4 text-center">{t('benefits')}</h2>
             <p className="text-center text-slate-300 mb-16">{t('benefits_sub')}</p>
@@ -166,13 +213,17 @@ export default function Home() {
         </section>
 
         {/* How it Works */}
-        <section className="section bg-white/5">
+        <section className="relative section">
+          <div className="absolute inset-0 -z-10">
+            <Image src="/how.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden="true" />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
           <div className="container">
             <h2 className="text-4xl font-bold mb-16 text-center">{t('how_it_works')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {howList.map((item, i) => (
                 <div key={i} className="text-center">
-                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                  <div className="w-16 h-16 bg-brand1 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                     {item.step}
                   </div>
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
@@ -189,7 +240,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-4 text-center">{t('integrations')}</h2>
             <p className="text-center text-slate-300 mb-16">{t('integrations_sub')}</p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 max-w-4xl mx-auto">
-              {['uber','bolt','myprio','viaverde','cartrack'].map((slug) => (
+              {['uber', 'bolt', 'myprio', 'viaverde', 'cartrack'].map((slug) => (
                 <div key={slug} className="flex flex-col items-center justify-center p-4 md:p-6 rounded-lg border border-white/10 hover:border-brand1 transition-colors bg-white/5">
                   <Image src={`/logos/${slug}.svg`} alt={t(`integrations_names.${slug}`)} width={120} height={32} className="h-8 w-auto text-slate-200 opacity-90" />
                   <span className="mt-3 text-sm text-slate-300">{t(`integrations_names.${slug}`)}</span>
@@ -203,7 +254,7 @@ export default function Home() {
         <section className="section bg-white/5">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {(t('kpis.cards', { returnObjects: true }) as Array<{title: string; items: string[]}>).map((card, i) => (
+              {(t('kpis.cards', { returnObjects: true }) as Array<{ title: string; items: string[] }>).map((card, i) => (
                 <div key={i} className="p-6 rounded-xl border border-white/10 bg-white/5">
                   <h3 className="text-xl font-bold mb-3">{card.title}</h3>
                   <ul className="space-y-2 text-slate-300">
@@ -218,13 +269,17 @@ export default function Home() {
         </section>
 
         {/* Success Stories */}
-        <section className="section bg-white/10">
+        <section className="relative section">
+          <div className="absolute inset-0 -z-10">
+            <Image src="/results.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden="true" />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
           <div className="container">
             <h2 className="text-4xl font-bold mb-6 text-center">{t('success.title')}</h2>
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-xl border border-white/10 bg-white/5">
                 <div className="flex items-center gap-3 mb-3">
-                  <Image src="/logos/conduz.svg" alt="Conduz.pt" width={36*3} height={36} className="h-9 w-auto" />
+                  <Image src="/logos/conduz.svg" alt="Conduz.pt" width={36 * 3} height={36} className="h-9 w-auto" />
                   <div>
                     <div className="font-semibold">Conduz.pt</div>
                     <div className="text-xs text-slate-400">{t('success.industry')}</div>
@@ -262,8 +317,8 @@ export default function Home() {
         <section className="section bg-brand1">
           <div className="container text-center">
             <h2 className="text-4xl font-bold mb-4">{t('cta_title')}</h2>
-            <p className="text-xl mb-8 text-blue-100">{t('cta_sub')}</p>
-            <button className="bg-white text-blue-600 hover:bg-slate-100 font-medium py-3 px-8 rounded-lg transition-colors" onClick={() => { fbq.event('Lead'); gtag.event({ action: 'generate_lead', category: 'engagement', label: 'cta_section' }); openForm(); }}>
+            <p className="text-xl mb-8 text-white/90">{t('cta_sub')}</p>
+            <button className="bg-white text-brand1 hover:bg-slate-100 font-medium py-3 px-8 rounded-lg transition-colors" onClick={() => { fbq.event('Lead'); gtag.event({ action: 'generate_lead', category: 'engagement', label: 'cta_section' }); openForm(); }}>
               {t('request_demo')}
             </button>
           </div>
@@ -274,7 +329,7 @@ export default function Home() {
           <div className="container">
             <h2 className="text-4xl font-bold mb-8 text-center">{t('faq.title')}</h2>
             <div className="max-w-4xl mx-auto space-y-4">
-              {(t('faq.items', { returnObjects: true }) as Array<{q: string; a: string}>).map((f, i) => (
+              {(t('faq.items', { returnObjects: true }) as Array<{ q: string; a: string }>).map((f, i) => (
                 <details key={i} className="rounded-lg border border-white/10 bg-white/5 p-4">
                   <summary className="cursor-pointer font-medium">{f.q}</summary>
                   <p className="mt-2 text-slate-300">{f.a}</p>

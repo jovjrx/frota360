@@ -8,7 +8,7 @@ export default function Document() {
   return (
     <Html lang="pt">
       <Head>
-        <style>{` :root{ --brand1:${BRAND1}; --brand2:${BRAND2}; --base:${BASE}; } `}</style>
+  <style>{` :root{ --brand1:${BRAND1} !important; --brand2:${BRAND2} !important; --base:${BASE} !important; } `}</style>
         <link rel="icon" href="/icone.png" sizes="32x32" />
         <link rel="icon" href="/icone-128.png" sizes="128x128" />
         <link rel="apple-touch-icon" href="/icone-128.png" />
