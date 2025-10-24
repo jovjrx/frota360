@@ -137,8 +137,8 @@ export default function Home() {
         />
       </Head>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white text-slate-900 border-b border-slate-200">
-        <div className="container flex items-center justify-between h-24">
-          <Image src="/logo-horizontal.png" alt={t('brand')} width={405} height={90} className="h-[90px] w-auto" />
+        <div className="container flex items-center justify-between h-20">
+          <Image src="/logo-horizontal.png" alt={t('brand')} width={320} height={64} className="h-[64px] w-auto" />
           <nav aria-label="Language selector" className="flex items-center gap-2">
             {locales.map((lng) => (
               <button
@@ -157,11 +157,11 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="pt-40">
+  <main className="pt-36">
         {/* Hero */}
         <section className="relative">
           <div className="absolute inset-0 pointer-events-none -z-10">
-            <Image src="/hero.png" alt="" fill sizes="100vw" priority className="object-cover" aria-hidden="true" />
+            <Image src="/hero.png" alt="" fill sizes="100vw" priority className="object-contain object-center" aria-hidden="true" />
             <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="container py-24 min-h-[560px] flex items-center">
@@ -180,7 +180,7 @@ export default function Home() {
         {/* Personas */}
         <section className="relative section">
           <div className="absolute inset-0 -z-10">
-            <Image src="/who.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden="true" />
+            <Image src="/who.png" alt="" fill sizes="100vw" className="object-contain object-center" aria-hidden="true" />
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="container">
@@ -215,7 +215,7 @@ export default function Home() {
         {/* How it Works */}
         <section className="relative section">
           <div className="absolute inset-0 -z-10">
-            <Image src="/how.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden="true" />
+            <Image src="/how.png" alt="" fill sizes="100vw" className="object-contain object-center" aria-hidden="true" />
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="container">
@@ -271,7 +271,7 @@ export default function Home() {
         {/* Success Stories */}
         <section className="relative section">
           <div className="absolute inset-0 -z-10">
-            <Image src="/results.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden="true" />
+            <Image src="/results.png" alt="" fill sizes="100vw" className="object-contain object-center" aria-hidden="true" />
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="container">
