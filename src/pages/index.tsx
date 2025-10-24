@@ -226,14 +226,29 @@ export default function Home() {
         {/* Why Frota360 (differentiators) */}
         <Section id="why" className="bg-white">
           <Container>
-            <Heading className="mb-8 text-center text-brand2">{t('why_frota360.title')}</Heading>
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-              {(t('why_frota360.points', { returnObjects: true }) as string[]).map((p, i) => (
-                <Card key={i} className="rounded-xl bg-slate-50 border-brand1 hover:shadow-md">
-                  <div className="mb-3 inline-flex w-10 h-10 items-center justify-center rounded-full bg-brand1/15 text-brand1">{i + 1}</div>
-                  <h3 className="font-semibold text-slate-900">{p}</h3>
-                </Card>
-              ))}
+            <Heading className="mb-3 text-center text-brand2">{t('why_frota360.title')}</Heading>
+            <div className="mx-auto h-1 w-24 bg-brand-gradient rounded-full mb-10" aria-hidden />
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+              {(t('why_frota360.points', { returnObjects: true }) as string[]).map((p, i) => {
+                const grad = i % 2 === 0
+                  ? 'from-brand1/35 via-brand2/25 to-brand1/35'
+                  : 'from-brand2/35 via-brand1/25 to-brand2/35';
+                return (
+                  <div key={i} className="group relative h-full">
+                    <span
+                      className={`pointer-events-none absolute -inset-[1px] rounded-2xl bg-gradient-to-r ${grad} opacity-60 blur-sm animate-gradient-float`}
+                      style={{ animationDelay: `${i * 0.4}s` }}
+                      aria-hidden
+                    />
+                    <div className="relative p-6 rounded-2xl border border-slate-200 bg-white transition-transform group-hover:-translate-y-0.5 shadow-sm group-hover:shadow-lg h-full min-h-[160px] flex flex-col">
+                      <div className="mb-3 inline-flex w-10 h-10 items-center justify-center rounded-full bg-brand-gradient text-white font-semibold ring-1 ring-white/40 shadow shrink-0">
+                        {i + 1}
+                      </div>
+                      <h3 className="font-semibold text-slate-900">{p}</h3>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Container>
         </Section>
