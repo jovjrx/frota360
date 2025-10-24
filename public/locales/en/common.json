@@ -3,8 +3,8 @@
   "cta_demo": "Request demo",
   "cta_demo_long": "Request free demo",
   "cta_whatsapp": "Chat on WhatsApp",
-  "hero_title": "Manage your TVDE operation simpler, faster and more profitable.",
-  "hero_subtitle": "Ditch spreadsheets with a 100% automated dashboard. Centralize drivers, vehicles and payouts — all in one place.",
+  "hero_title": "Calculate payouts, send reports and pay drivers — in minutes.",
+  "hero_subtitle": "Complete suite: Website, Driver App and Manager Dashboard — with your brand, all centralized.",
   "for_who": "Who it's for",
   "benefits": "Main benefits",
   "benefits_sub": "Sell outcomes, not tech features",
@@ -12,7 +12,7 @@
   "integrations": "Integrations",
   "integrations_sub": "Connect with the leading platforms",
   "cta_title": "Simplify your TVDE operation",
-  "cta_sub": "Book a 20-minute demo.",
+  "cta_sub": "Website + Driver App + Manager Dashboard — with your brand.",
   "request_demo": "Request a demo",
   "footer_desc": "Simple, fast and profitable TVDE management.",
   "footer_product": "Product",
@@ -48,6 +48,22 @@
     "viaverde": "Via Verde",
     "cartrack": "Cartrack"
   },
+  "integrations_desc": {
+    "uber": "Trips and earnings data",
+    "bolt": "Rides and fee reports",
+    "myprio": "Fuel and expenses",
+    "viaverde": "Tolls integrated",
+    "cartrack": "Telematics and location"
+  },
+  "why_frota360": {
+    "title": "Why Frota360",
+    "points": [
+      "Complete operational visibility",
+      "Accounting integration (SAF‑T)",
+      "Portuguese support specialized in TVDE"
+    ]
+  },
+  "trust_badges": ["White-label", "Website + App + Dashboard", "Secure & compliant"],
   "form": {
     "title": "Request a demo",
     "name": "Name",
@@ -101,13 +117,27 @@
     "cta": "Visit Conduz.pt",
     "why": {"title": "Why it works", "points": ["Centralized operations", "Reliable integrations", "Actionable reports"]}
   },
+  "testimonials": [
+    {"name": "Anna M.", "role": "Fleet Manager", "company": "AlphaDrive", "quote": "We stopped making payout mistakes and saved hours weekly.", "result": "+25% payout accuracy"},
+    {"name": "Carlos R.", "role": "Operations", "company": "UrbanFleet", "quote": "We centralized everything and gained predictability.", "result": "-30% admin time"},
+    {"name": "Beatrice L.", "role": "Finance", "company": "NovaMove", "quote": "I export ready-to-go reports for accounting.", "result": "SAF‑T integration made easy"}
+  ],
+    "testimonials_title": "Testimonials",
   "faq": {
     "title": "Frequently Asked Questions",
     "items": [
       { "q": "What’s included in the Complete Plan?", "a": "Marketing website, driver dashboard, manager dashboard, integrations (Uber, Bolt, MyPrio, Via Verde), reports and KPIs." },
       { "q": "How fast can we go live?", "a": "Fast onboarding. Typically from a few days up to 2 weeks depending on integrations." },
       { "q": "Can I use my own brand?", "a": "Yes. The entire frontend is customized with your visual identity." },
-      { "q": "How does support work?", "a": "Dedicated support during implementation and after go-live with defined SLAs." }
+      { "q": "How does support work?", "a": "Dedicated support during implementation and after go-live with defined SLAs." },
+  { "q": "Is it white-label and exclusive?", "a": "Yes. We deliver with your brand and a dedicated instance for your company." },
+      { "q": "How do payouts work?", "a": "Automatic per-ride and fee calculation with ready-to-pay reports." },
+      { "q": "Does it integrate with accounting?", "a": "Yes. SAF‑T export and compatible financial reports." },
+      { "q": "Which integrations are available?", "a": "Uber, Bolt, MyPRIO, Via Verde, Cartrack, and others on request." },
+      { "q": "How about data security?", "a": "Hosted on Vercel with RBAC, logs and auditing." },
+      { "q": "Is it mobile-friendly?", "a": "Yes. Responsive interface and a driver app." },
+      { "q": "Can I export to Excel/PDF?", "a": "Yes. Export dashboards and reports to PDF/Excel." },
+      { "q": "Do you offer Portuguese support?", "a": "Yes, local team specialized in TVDE." }
     ]
   }
 }

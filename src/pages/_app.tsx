@@ -1,13 +1,17 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { appWithTranslation } from 'next-i18next';
+import { appWithTranslation, useTranslation } from 'next-i18next';
 import Script from 'next/script';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import Container from '@/components/ui/Container';
+import LanguagePicker from '@/components/ui/LanguagePicker';
 import * as gtag from '@/utils/gtag';
 import * as fbq from '@/utils/fbpixel';
 
 function App({ Component, pageProps }: AppProps) {
+  const { t } = useTranslation('common');
   const router = useRouter();
 
   useEffect(() => {
@@ -23,6 +27,26 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      {/* Promo bar: free trial */}
+      <div className="bg-slate-900 text-white text-sm">
+        <div className="container py-2 text-center">
+          <a href="#cta" className="hover:underline">
+            {t('cta_sub')}
+          </a>
+        </div>
+      </div>
+      {/* Global header with language selector */}
+      <header className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-slate-200">
+        <Container className="h-16 flex items-center justify-between">
+          <a href="/" className="inline-flex items-center gap-2">
+            <Image src="/logo-horizontal.png" alt="Frota360" width={200} height={60} className="h-10 md:h-12 w-auto" />
+          </a>
+          <div className="flex items-center gap-3">
+            <LanguagePicker />
+          </div>
+        </Container>
+      </header>
+
       {/* Google Analytics */}
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
         <>

@@ -4,14 +4,18 @@ import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
 import { COMPANY_EMAIL, WHATSAPP_NUMBER } from '@/config/site';
 import * as gtag from '@/utils/gtag';
 import * as fbq from '@/utils/fbpixel';
+import Container from '@/components/ui/Container';
+import Section from '@/components/ui/Section';
+import Heading from '@/components/ui/Heading';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
+import Card from '@/components/ui/Card';
 
 export default function Home() {
   const { t } = useTranslation('common');
-  const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
@@ -24,20 +28,7 @@ export default function Home() {
     fleetSize: '',
     message: '',
   });
-  const locales = ['pt', 'en', 'es', 'it', 'fr'] as const;
-  const flags: Record<(typeof locales)[number], string> = {
-    pt: '🇵🇹',
-    en: '🇬🇧',
-    es: '🇪🇸',
-    it: '🇮🇹',
-    fr: '🇫🇷',
-  };
-  const handleLocaleChange = async (lng: (typeof locales)[number]) => {
-    if (router.locale === lng) return;
-    try {
-      await router.push(router.asPath, undefined, { locale: lng });
-    } catch { }
-  };
+  
 
   const openForm = () => { setShowForm(true); setSuccess(null); setError(null); };
   const closeForm = () => { setShowForm(false); };
@@ -102,7 +93,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div className="min-h-screen bg-white text-slate-800">
       <Head>
         <title>{t('seo.title')}</title>
         <meta name="description" content={t('seo.description')} />
@@ -149,165 +140,170 @@ export default function Home() {
           }}
         />
       </Head>
-      {/* Header integrated into hero (transparent) handled below */}
+  {/* Header is global (in _app). Remove hero-integrated header. */}
 
       <main className="pt-0">
-        {/* Hero + Para quem é */}
-        <section className="relative">
-          <div className="absolute inset-0 pointer-events-none z-0">
-            <Image src="/who.png" alt="" fill sizes="100vw" priority className="object-cover object-center" aria-hidden="true" />
-            {/* Soft white tint so the standard logo stays readable while background still shows */}
-            <div className="absolute inset-0 reveal bg-gradient-to-b from-white/40 via-black/60 to-black/20" />
-          </div>
-          {/* Integrated top bar (logo + language) */}
-          <div className="absolute top-4 left-0 right-0 z-20">
-            <div className="container h-24 flex items-center justify-between">
-              <Image src="/logo-horizontal.png" alt={t('brand')} width={340} height={64} className="h-16 w-auto reveal" style={{ transitionDelay: '80ms' }} />
-              <nav aria-label="Language selector" className="flex items-center gap-2">
-                {locales.map((lng, i) => (
-                  <button
-                    key={lng}
-                    type="button"
-                    onClick={() => handleLocaleChange(lng)}
-                    title={lng.toUpperCase()}
-                    aria-current={router.locale === lng ? 'true' : undefined}
-                    className={`reveal w-10 h-10 rounded-md flex items-center justify-center transition-colors border hover:bg-white/10 ${router.locale === lng ? 'bg-white/20 border-white/40' : 'border-white/10'}`}
-                    style={{ transitionDelay: `${150 + i * 90}ms` }}
-                  >
-                    <Image src={`/flags/${lng}.svg`} alt={lng} width={24} height={16} className="w-6 h-4" />
-                    <span className="sr-only">{lng}</span>
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
-          <div className="container pt-28 pb-24 min-h-[100vh] relative z-10 flex items-start lg:items-center">
+        {/* Hero (simplified) + Para quem é */}
+        <Section className="bg-white border-b border-slate-200">
+          <Container>
             <div className="grid lg:grid-cols-2 gap-12 w-full">
               <div className="max-w-3xl reveal">
-              <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight">{t('hero_title')}</h1>
-              <p className="text-xl text-slate-200 mb-8">{t('hero_subtitle')}</p>
+              <Heading level={1} className="mb-4 leading-tight">{t('hero_title')}</Heading>
+              <p className="text-lg md:text-xl text-slate-700 mb-4">{t('hero_subtitle')}</p>
+              <Badge variant="soft" className="mb-4"><span aria-hidden>🎁</span><span>{t('cta_sub')}</span></Badge>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="btn-primary" onClick={openForm}>
-                  {t('request_demo')}
-                </button>
+                <Button onClick={openForm}>{t('request_demo')}</Button>
               </div>
+              {/* Trust badges */}
+              <ul className="mt-4 flex flex-wrap gap-2 text-sm text-slate-600">
+                {(t('trust_badges', { returnObjects: true }) as string[]).map((b, i) => (
+                  <li key={i} className="px-3 py-1 rounded-full border border-slate-200 bg-white/90 shadow-sm">
+                    {b}
+                  </li>
+                ))}
+              </ul>
               </div>
               {/* Para quem é dentro da primeira section (lado direito no desktop) */}
               <div className="reveal">
-                <h2 className="text-3xl font-bold mb-4">{t('for_who')}</h2>
-                <ul className="space-y-4">
-                  {personas.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/10">
-                      <span className="mt-0.5 inline-flex w-6 h-6 items-center justify-center rounded-full bg-brand1/20 text-brand1">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                      <div>
-                        <div className="font-semibold">{item.title}</div>
-                        <div className="text-slate-300 text-sm">{item.desc}</div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <Heading className="mb-4">{t('for_who')}</Heading>
+                 <ul className="space-y-4">
+                   {personas.map((item, i) => {
+                     const alt = i % 2 === 1;
+                     const cardColor = alt ? 'border-brand2 bg-brand2/10' : 'border-brand1 bg-brand1/10';
+                     const iconColor = alt ? 'bg-brand2/20 text-brand2' : 'bg-brand1/20 text-brand1';
+                     const dir = alt ? 'bg-gradient-to-br from-brand2/30 via-transparent to-brand1/30' : 'bg-gradient-to-br from-brand1/30 via-transparent to-brand2/30';
+                     return (
+                      <li key={i} className="flex items-start gap-3">
+                        <Card className={`w-full p-3 overflow-hidden ${cardColor}`}>
+                          <div className="relative isolate">
+                            {/* Animated gradient glow background */}
+                            <span aria-hidden className={`pointer-events-none absolute -inset-2 rounded-2xl blur-xl opacity-60 animate-gradient-float ${dir}`} style={{ animationDelay: `${i * 0.6}s` }} />
+                            <div className="relative flex items-start gap-3">
+                            <span className={`mt-0.5 inline-flex w-6 h-6 items-center justify-center rounded-full ring-1 ring-white/40 ${iconColor}`}>
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </span>
+                            <div>
+                              <div className="font-semibold text-slate-900">{item.title}</div>
+                              <div className="text-slate-600 text-sm">{item.desc}</div>
+                            </div>
+                            </div>
+                          </div>
+                        </Card>
+                      </li>
+                     );
+                   })}
+                 </ul>
+               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         
 
-        {/* Benefits */}
-  <section id="benefits" className="section bg-white/10" ref={successRef as any}>
-          <div className="container">
-            <h2 className="text-4xl font-bold mb-4 text-center">{t('benefits')}</h2>
-            <p className="text-center text-slate-300 mb-16">{t('benefits_sub')}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {benefits.map((item, i) => (
-                <div key={i} className="p-6 rounded-lg border border-white/10">
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-slate-300 text-sm">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Features (benefits) moved below How */}
 
         {/* How it Works */}
-  <section id="how" className="relative section">
-          <div className="absolute inset-0 z-0">
-            <Image src="/how.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
-          </div>
-          <div className="container relative z-10 reveal">
-            <h2 className="text-4xl font-bold mb-16 text-center">{t('how_it_works')}</h2>
+        <Section id="how" className="bg-slate-50">
+          <Container className="reveal">
+            <Heading className="mb-8 text-center text-brand2">{t('how_it_works')}</Heading>
+            {/* Removed GIF placeholder as requested */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {howList.map((item, i) => (
                 <div key={i} className="text-center reveal">
-                  <div className="w-16 h-16 bg-brand1 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                  <div className="w-16 h-16 bg-brand1 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-white">
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-slate-300">{item.desc}</p>
+                  <h3 className="text-xl font-bold mb-2 text-slate-900">{item.title}</h3>
+                  <p className="text-slate-600">{item.desc}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
+
+        {/* Why Frota360 (differentiators) */}
+        <Section id="why" className="bg-white">
+          <Container>
+            <Heading className="mb-8 text-center text-brand2">{t('why_frota360.title')}</Heading>
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+              {(t('why_frota360.points', { returnObjects: true }) as string[]).map((p, i) => (
+                <Card key={i} className="rounded-xl bg-slate-50 border-brand1 hover:shadow-md">
+                  <div className="mb-3 inline-flex w-10 h-10 items-center justify-center rounded-full bg-brand1/15 text-brand1">{i + 1}</div>
+                  <h3 className="font-semibold text-slate-900">{p}</h3>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </Section>
+
+        {/* Features (benefits) - moved after How for better conversion flow */}
+        <Section id="benefits" className="bg-slate-50" ref={successRef as any}>
+          <Container>
+            <Heading className="mb-4 text-center text-brand2">{t('benefits')}</Heading>
+            <p className="text-center text-slate-600 mb-16">{t('benefits_sub')}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {benefits.map((item, i) => (
+                <Card key={i} className="border-brand1 hover:shadow-md">
+                  <h3 className="text-lg font-bold mb-2 text-slate-900">{item.title}</h3>
+                  <p className="text-slate-600 text-sm">{item.desc}</p>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </Section>
 
         {/* Integrations */}
-  <section id="integrations" className="section bg-white/10">
-          <div className="container">
-            <h2 className="text-4xl font-bold mb-4 text-center">{t('integrations')}</h2>
-            <p className="text-center text-slate-300 mb-16">{t('integrations_sub')}</p>
+        <Section id="integrations" className="bg-white">
+          <Container>
+            <Heading className="mb-4 text-center text-brand2">{t('integrations')}</Heading>
+            <p className="text-center text-slate-600 mb-16">{t('integrations_sub')}</p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 max-w-4xl mx-auto">
               {['uber', 'bolt', 'myprio', 'viaverde', 'cartrack'].map((slug) => (
-                <div key={slug} className="flex flex-col items-center justify-center p-4 md:p-6 rounded-lg border border-white/10 hover:border-brand1 transition-colors bg-white/5">
-                  <Image src={`/logos/${slug}.svg`} alt={t(`integrations_names.${slug}`)} width={120} height={32} className="h-8 w-auto text-slate-200 opacity-90" />
-                  <span className="mt-3 text-sm text-slate-300">{t(`integrations_names.${slug}`)}</span>
-                </div>
+                <Card key={slug} className="flex flex-col items-center justify-center p-4 md:p-6 border-brand1 hover:shadow-md transition-colors">
+                  <Image src={`/logos/${slug}.svg`} alt={t(`integrations_names.${slug}`)} width={120} height={32} className="h-8 w-auto opacity-90" />
+                  <span className="mt-3 text-sm font-medium text-slate-800">{t(`integrations_names.${slug}`)}</span>
+                  <span className="mt-1 text-xs text-slate-600 text-center">{t(`integrations_desc.${slug}`)}</span>
+                </Card>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         {/* KPIs & Security */}
-        <section className="section bg-white/5">
-          <div className="container">
+        <Section className="bg-slate-50">
+          <Container>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(t('kpis.cards', { returnObjects: true }) as Array<{ title: string; items: string[] }>).map((card, i) => (
-                <div key={i} className="p-6 rounded-xl border border-white/10 bg-white/5">
-                  <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-                  <ul className="space-y-2 text-slate-300">
+                <Card key={i} className="rounded-xl bg-slate-50 border-brand1 hover:shadow-md">
+                  <h3 className="text-xl font-bold mb-3 text-slate-900">{card.title}</h3>
+                  <ul className="space-y-2 text-slate-600">
                     {card.items.map((it, j) => (
                       <li key={j} className="flex gap-3 items-start"><span className="mt-1 w-2 h-2 rounded-full bg-brand1" />{it}</li>
                     ))}
                   </ul>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         {/* Success Stories */}
-        <section className="relative section">
-          <div className="absolute inset-0 z-0">
-            <Image src="/results.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
-          </div>
-          <div className="container relative z-10 reveal">
-            <h2 className="text-4xl font-bold mb-6 text-center">{t('success.title')}</h2>
+        <Section className="bg-white">
+          <Container className="reveal">
+            <Heading className="mb-6 text-center text-brand2">{t('success.title')}</Heading>
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5 reveal">
+              <Card className="rounded-xl reveal border-brand1 hover:shadow-md">
                 <div className="flex items-center gap-3 mb-3">
                   <Image src="/logos/conduz.png" alt="Conduz.pt" width={36 * 3} height={36} className="h-9 w-auto" />
                   <div>
-                    <div className="font-semibold">Conduz.pt</div>
-                    <div className="text-xs text-slate-400">{t('success.industry')}</div>
+                    <div className="font-semibold text-slate-900">Conduz.pt</div>
+                    <div className="text-xs text-slate-500">{t('success.industry')}</div>
                   </div>
                 </div>
-                <p className="text-slate-300 mb-4">{t('success.summary')}</p>
-                <ul className="space-y-2 text-slate-200 mb-4">
+                <p className="text-slate-600 mb-4">{t('success.summary')}</p>
+                <ul className="space-y-2 text-slate-700 mb-4">
                   {(t('success.metrics', { returnObjects: true }) as string[]).map((m, i) => (
                     <li key={i} className="flex gap-3 items-start"><span className="mt-1 w-2 h-2 rounded-full bg-brand2" />{m}</li>
                   ))}
@@ -316,118 +312,136 @@ export default function Home() {
                   href="https://conduz.pt"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-brand1 hover:underline"
+                  className="inline-flex items-center gap-2 text-brand2 hover:underline"
                   onClick={() => { gtag.event({ action: 'select_item', category: 'engagement', label: 'case_conduz' }); }}
                 >
                   {t('success.cta')} →
                 </a>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-6 reveal">
-                <h3 className="text-xl font-bold mb-3">{t('success.why.title')}</h3>
-                <ul className="space-y-2 text-slate-300">
+              </Card>
+              <Card className="rounded-xl p-6 reveal border-brand1 hover:shadow-md">
+                <h3 className="text-xl font-bold mb-3 text-slate-900">{t('success.why.title')}</h3>
+                <ul className="space-y-2 text-slate-600">
                   {(t('success.why.points', { returnObjects: true }) as string[]).map((p, i) => (
                     <li key={i} className="flex gap-3 items-start reveal"><span className="mt-1 w-2 h-2 rounded-full bg-brand1" />{p}</li>
                   ))}
                 </ul>
-              </div>
+              </Card>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
+
+        {/* Testimonials removed as requested */}
 
         {/* CTA */}
-        <section className="section bg-brand1">
-          <div className="container text-center">
-            <h2 className="text-4xl font-bold mb-4">{t('cta_title')}</h2>
+        <Section id="cta" className="bg-brand-gradient text-white">
+          <Container className="text-center">
+            <Heading className="mb-4 text-white">{t('cta_title')}</Heading>
             <p className="text-xl mb-8 text-white/90">{t('cta_sub')}</p>
-            <button className="bg-white text-brand1 hover:bg-slate-100 font-medium py-3 px-8 rounded-lg transition-colors" onClick={() => { fbq.event('Lead'); gtag.event({ action: 'generate_lead', category: 'engagement', label: 'cta_section' }); openForm(); }}>
+            <Button className="bg-white text-brand1 hover:bg-slate-100" onClick={() => { fbq.event('Lead'); gtag.event({ action: 'generate_lead', category: 'engagement', label: 'cta_section' }); openForm(); }}>
               {t('request_demo')}
-            </button>
-          </div>
-        </section>
+            </Button>
+          </Container>
+        </Section>
 
         {/* FAQ */}
-        <section className="section bg-white/5">
-          <div className="container">
-            <h2 className="text-4xl font-bold mb-8 text-center">{t('faq.title')}</h2>
+        <Section className="bg-white">
+          <Container>
+            <Heading className="mb-8 text-center text-brand2">{t('faq.title')}</Heading>
             <div className="max-w-4xl mx-auto space-y-4">
               {(t('faq.items', { returnObjects: true }) as Array<{ q: string; a: string }>).map((f, i) => (
-                <details key={i} className="rounded-lg border border-white/10 bg-white/5 p-4">
-                  <summary className="cursor-pointer font-medium">{f.q}</summary>
-                  <p className="mt-2 text-slate-300">{f.a}</p>
+                <details key={i} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                  <summary className="cursor-pointer font-medium text-slate-900">{f.q}</summary>
+                  <p className="mt-2 text-slate-600">{f.a}</p>
                 </details>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </main>
 
       {/* Footer */}
-      <footer className="relative border-t border-white/10 py-12">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Image src="/hero.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/0" />
-        </div>
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div className=" items-start gap-3">
-              <Image src="/logo-site.png" alt={t('brand')} width={120} height={40} className="h-10 w-auto" />
-              <div>
-                <p className="text-slate-400 text-sm">{t('footer_desc')}</p>
+      <footer className="relative border-t border-slate-200 bg-slate-50">
+        <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-brand2/50 to-transparent" aria-hidden />
+        <Container className="relative z-10 py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-10">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <Image src="/logo-horizontal.png" alt={t('brand')} width={160} height={48} className="h-12 w-auto" />
+              </div>
+              <p className="text-slate-600 text-sm mb-4">{t('footer_desc')}</p>
+              <ul className="flex flex-wrap gap-2 text-xs text-slate-600">
+                {(t('trust_badges', { returnObjects: true }) as string[]).slice(0,4).map((b, i) => (
+                  <li key={i} className="px-2.5 py-1 rounded-full border border-slate-200 bg-white/80">{b}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">{t('footer_product')}</h3>
+              <ul className="text-slate-600 text-sm space-y-2">
+                <li><a href="#how" className="hover:text-slate-900 transition-colors">{t('how_it_works')}</a></li>
+                <li><a href="#benefits" className="hover:text-slate-900 transition-colors">{t('footer_features')}</a></li>
+                <li><a href="#integrations" className="hover:text-slate-900 transition-colors">{t('integrations')}</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">{t('footer_company', 'Empresa')}</h3>
+              <ul className="text-slate-600 text-sm space-y-2">
+                <li><a href="#why" className="hover:text-slate-900 transition-colors">{t('why_frota360.title')}</a></li>
+                <li><a href="/privacy" className="hover:text-slate-900 transition-colors">{t('privacy')}</a></li>
+                <li><a href="/terms" className="hover:text-slate-900 transition-colors">{t('terms')}</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">{t('footer_contact')}</h3>
+              <ul className="text-slate-600 text-sm space-y-2">
+                <li><a href={`mailto:${COMPANY_EMAIL}`} className="hover:text-slate-900 transition-colors">{COMPANY_EMAIL}</a></li>
+                <li><a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="hover:text-slate-900 transition-colors">{WHATSAPP_NUMBER}</a></li>
+              </ul>
+              <div className="mt-4">
+                <Button className="px-4 py-2 text-sm" onClick={openForm}>{t('footer_demo')}</Button>
               </div>
             </div>
-            <div>
-              <h3 className="font-bold mb-4">{t('footer_product')}</h3>
-              <ul className="text-slate-400 text-sm space-y-2">
-                <li><a href="#benefits" className="hover:text-white transition-colors">{t('footer_features')}</a></li>
-                <li><a href="#how" className="hover:text-white transition-colors">{t('integrations')}</a></li>
-                <li><button onClick={openForm} className="hover:text-white transition-colors">{t('footer_demo')}</button></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">{t('footer_contact')}</h3>
-              <ul className="text-slate-400 text-sm space-y-2">
-                <li><a href={`mailto:${COMPANY_EMAIL}`} className="hover:text-white transition-colors">{COMPANY_EMAIL}</a></li>
-                <li><a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="hover:text-white transition-colors">{WHATSAPP_NUMBER}</a></li>
-              </ul>
-            </div>
           </div>
-          <div className="border-t border-white/10 pt-8 text-center text-slate-400 text-sm">
-            <p>{t('copyright')}</p>
-            <p className="mt-1 opacity-80">{t('footer_madeby', 'Um produto Alvorada Magistral')}</p>
+          <div className="border-t border-slate-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-600 text-sm">
+            <p className="text-center md:text-left">{t('copyright')}</p>
+            <p className="opacity-80">{t('footer_madeby', 'Um produto Alvorada Magistral')}</p>
           </div>
-        </div>
+        </Container>
       </footer>
 
       
 
       {showForm && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4" role="dialog" aria-modal="true">
-          <div className="w-full max-w-lg bg-slate-900 border border-white/10 rounded-xl p-6">
+          <div className="w-full max-w-lg bg-white text-slate-900 border border-slate-200 rounded-xl p-6 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-bold">{t('form.title')}</h3>
-              <button onClick={closeForm} className="text-slate-300 hover:text-white">✕</button>
+              <button onClick={closeForm} className="text-slate-600 hover:text-slate-900">✕</button>
             </div>
             <form onSubmit={onSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm mb-1">{t('form.name')}</label>
-                  <input name="name" value={form.name} onChange={onChange} required className="w-full bg-slate-800 border border-white/10 rounded-md px-3 py-2" />
+                  <label className="block text-sm mb-1 text-slate-700">{t('form.name')}</label>
+                  <input name="name" value={form.name} onChange={onChange} required className="w-full bg-white border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand1/40 focus:border-brand1/50" />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">{t('form.email')}</label>
-                  <input type="email" name="email" value={form.email} onChange={onChange} required className="w-full bg-slate-800 border border-white/10 rounded-md px-3 py-2" />
+                  <label className="block text-sm mb-1 text-slate-700">{t('form.email')}</label>
+                  <input type="email" name="email" value={form.email} onChange={onChange} required className="w-full bg-white border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand1/40 focus:border-brand1/50" />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">{t('form.phone')}</label>
-                  <input name="phone" value={form.phone} onChange={onChange} className="w-full bg-slate-800 border border-white/10 rounded-md px-3 py-2" />
+                  <label className="block text-sm mb-1 text-slate-700">{t('form.phone')}</label>
+                  <input name="phone" value={form.phone} onChange={onChange} className="w-full bg-white border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand1/40 focus:border-brand1/50" />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">{t('form.company')}</label>
-                  <input name="company" value={form.company} onChange={onChange} className="w-full bg-slate-800 border border-white/10 rounded-md px-3 py-2" />
+                  <label className="block text-sm mb-1 text-slate-700">{t('form.company')}</label>
+                  <input name="company" value={form.company} onChange={onChange} className="w-full bg-white border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand1/40 focus:border-brand1/50" />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm mb-1">{t('form.fleet_size')}</label>
-                  <select name="fleetSize" value={form.fleetSize} onChange={onChange} className="w-full bg-slate-800 border border-white/10 rounded-md px-3 py-2">
+                  <label className="block text-sm mb-1 text-slate-700">{t('form.fleet_size')}</label>
+                  <select name="fleetSize" value={form.fleetSize} onChange={onChange} className="w-full bg-white border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand1/40 focus:border-brand1/50">
                     <option value="">-</option>
                     {(t('form.fleet_size_options', { returnObjects: true }) as string[]).map((opt, i) => (
                       <option key={i} value={opt}>{opt}</option>
@@ -435,14 +449,14 @@ export default function Home() {
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm mb-1">{t('form.message')}</label>
-                  <textarea name="message" value={form.message} onChange={onChange} required rows={4} className="w-full bg-slate-800 border border-white/10 rounded-md px-3 py-2" />
+                  <label className="block text-sm mb-1 text-slate-700">{t('form.message')}</label>
+                  <textarea name="message" value={form.message} onChange={onChange} required rows={4} className="w-full bg-white border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand1/40 focus:border-brand1/50" />
                 </div>
               </div>
-              {success && <p className="text-emerald-400 text-sm">{success}</p>}
-              {error && <p className="text-red-400 text-sm">{error}</p>}
+              {success && <p className="text-emerald-600 text-sm">{success}</p>}
+              {error && <p className="text-red-600 text-sm">{error}</p>}
               <div className="flex items-center justify-end gap-3">
-                <button type="button" onClick={closeForm} className="border border-white/20 px-4 py-2 rounded-md">{t('form.close')}</button>
+                <button type="button" onClick={closeForm} className="border border-slate-300 text-slate-700 hover:bg-slate-50 px-4 py-2 rounded-md">{t('form.close')}</button>
                 <button type="submit" disabled={loading} className="btn-primary">
                   {loading ? '...' : t('form.submit')}
                 </button>

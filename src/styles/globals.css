@@ -31,7 +31,7 @@ body {
   }
 
   .btn-primary {
-    @apply bg-brand1 hover:brightness-90 text-white font-medium py-3 px-6 rounded-lg transition-colors;
+    @apply bg-brand2 hover:brightness-110 text-white font-medium py-3 px-6 rounded-lg transition-colors;
   }
 
   .section {
@@ -39,10 +39,28 @@ body {
   }
 }
 
+/* Brand gradient utility */
+.bg-brand-gradient {
+  background-image: linear-gradient(90deg, var(--brand2), var(--brand1));
+}
+
 /* Simple reveal animation */
 .reveal { opacity: 0; transform: translateY(12px); }
 .reveal.in { opacity: 1; transform: translateY(0); transition: opacity .6s ease-out, transform .6s ease-out; }
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal.in { transition: none; transform: none; opacity: 1; }
+}
+
+/* Animated gradient glow for cards */
+@keyframes gradient-float {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(6px,-8px,0) scale(1.02); }
+  100% { transform: translate3d(0,0,0) scale(1); }
+}
+.animate-gradient-float {
+  animation: gradient-float 10s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-float { animation: none; }
 }
 

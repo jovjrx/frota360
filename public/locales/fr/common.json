@@ -3,8 +3,8 @@
   "cta_demo": "Demander une démo",
   "cta_demo_long": "Demander une démo gratuite",
   "cta_whatsapp": "Parler sur WhatsApp",
-  "hero_title": "Gérez votre opération TVDE plus simplement, rapidement et de manière rentable.",
-  "hero_subtitle": "Abandonnez les tableurs avec un tableau de bord 100% automatisé. Centralisez conducteurs, véhicules et paiements — tout au même endroit.",
+  "hero_title": "Calculez les paiements, envoyez des rapports et payez les chauffeurs — en quelques minutes.",
+  "hero_subtitle": "Suite complète : Site web, App Conducteur et Tableau Manager — avec votre marque et tout centralisé.",
   "for_who": "Pour qui",
   "benefits": "Avantages principaux",
   "benefits_sub": "Vendez des résultats, pas des fonctionnalités",
@@ -12,7 +12,7 @@
   "integrations": "Intégrations",
   "integrations_sub": "Connectez-vous aux principales plateformes",
   "cta_title": "Simplifiez votre opération TVDE",
-  "cta_sub": "Réservez une démo de 20 minutes.",
+  "cta_sub": "Site web + App Conducteur + Tableau Manager — avec votre marque.",
   "request_demo": "Demander une démo",
   "footer_desc": "Gestion TVDE simple, rapide et rentable.",
   "footer_product": "Produit",
@@ -48,6 +48,22 @@
     "viaverde": "Via Verde",
     "cartrack": "Cartrack"
   },
+  "integrations_desc": {
+    "uber": "Données trajets et gains",
+    "bolt": "Rapports courses et frais",
+    "myprio": "Carburant et dépenses",
+    "viaverde": "Péages intégrés",
+    "cartrack": "Télématique et localisation"
+  },
+  "why_frota360": {
+    "title": "Pourquoi Frota360",
+    "points": [
+      "Visibilité opérationnelle complète",
+      "Intégration comptable (SAF‑T)",
+      "Support en portugais spécialisé TVDE"
+    ]
+  },
+  "trust_badges": ["White‑label", "Site + App + Dashboard", "Sécurisé & conforme"],
   "form": {
     "title": "Demander une démo",
     "name": "Nom",
@@ -101,6 +117,12 @@
     "cta": "Visiter Conduz.pt",
     "why": {"title": "Pourquoi ça marche", "points": ["Opérations centralisées", "Intégrations fiables", "Rapports actionnables"]}
   },
+  "testimonials": [
+    {"name": "Anna M.", "role": "Gestionnaire de flotte", "company": "AlphaDrive", "quote": "Nous avons cessé les erreurs de paiement et gagné des heures.", "result": "+25% précision des paiements"},
+    {"name": "Carlos R.", "role": "Opérations", "company": "UrbanFleet", "quote": "Nous avons tout centralisé et gagné en prévisibilité.", "result": "-30% temps administratif"},
+    {"name": "Beatrice L.", "role": "Finance", "company": "NovaMove", "quote": "J’exporte des rapports prêts pour la comptabilité.", "result": "Intégration SAF‑T facilitée"}
+  ],
+    "testimonials_title": "Témoignages",
   "faq": {
     "title": "Questions fréquentes",
     "items": [

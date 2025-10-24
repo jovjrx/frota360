@@ -3,8 +3,8 @@
   "cta_demo": "Solicitar demo",
   "cta_demo_long": "Solicitar demo gratuita",
   "cta_whatsapp": "Hablar por WhatsApp",
-  "hero_title": "Gestiona tu operación TVDE de forma más simple, rápida y rentable.",
-  "hero_subtitle": "Olvida las hojas de cálculo con un panel 100% automatizado. Centraliza conductores, vehículos y pagos en un solo lugar.",
+  "hero_title": "Calcula pagos, envía informes y paga a conductores — en minutos.",
+  "hero_subtitle": "Suite completa: Sitio, App de Conductor y Panel del Gestor — con tu marca y todo centralizado.",
   "for_who": "Para quién es",
   "benefits": "Beneficios principales",
   "benefits_sub": "Vende resultados, no características técnicas",
@@ -12,7 +12,7 @@
   "integrations": "Integraciones",
   "integrations_sub": "Conecta con las principales plataformas",
   "cta_title": "Simplifica tu operación TVDE",
-  "cta_sub": "Agenda una demo de 20 minutos.",
+  "cta_sub": "Sitio web + App de Conductor + Panel del Gestor — con tu marca.",
   "request_demo": "Solicitar demostración",
   "footer_desc": "Gestión TVDE simple, rápida y rentable.",
   "footer_product": "Producto",
@@ -48,6 +48,22 @@
     "viaverde": "Via Verde",
     "cartrack": "Cartrack"
   },
+  "integrations_desc": {
+    "uber": "Datos de viajes y ganancias",
+    "bolt": "Reportes de viajes y tarifas",
+    "myprio": "Combustible y gastos",
+    "viaverde": "Peajes integrados",
+    "cartrack": "Telemática y ubicación"
+  },
+  "why_frota360": {
+    "title": "Por qué Frota360",
+    "points": [
+      "Visibilidad operativa completa",
+      "Integración contable (SAF‑T)",
+      "Soporte en portugués especializado en TVDE"
+    ]
+  },
+  "trust_badges": ["White‑label", "Sitio + App + Panel", "Seguro y conforme"],
   "form": {
     "title": "Solicitar demostración",
     "name": "Nombre",
@@ -61,8 +77,7 @@
     "close": "Cerrar",
     "success": "¡Gracias! Nos pondremos en contacto pronto.",
     "error": "No se pudo enviar. Inténtalo de nuevo."
-  }
-  ,
+  },
   "seo": {
     "title": "Frota360 – Gestión TVDE completa para flotas y conductores",
     "description": "Todo en uno para TVDE: sitio web, panel del conductor y del gestor, integraciones (Uber, Bolt, MyPrio, Via Verde), KPIs, informes y seguridad. Solicita una demo."
@@ -101,13 +116,27 @@
     "cta": "Visitar Conduz.pt",
     "why": {"title": "Por qué funciona", "points": ["Operación centralizada", "Integraciones confiables", "Informes accionables"]}
   },
+  "testimonials": [
+    {"name": "Ana M.", "role": "Gestora de Flota", "company": "AlphaDrive", "quote": "Dejamos de cometer errores en pagos y ahorramos horas.", "result": "+25% precisión de pagos"},
+    {"name": "Carlos R.", "role": "Operaciones", "company": "UrbanFleet", "quote": "Centralizamos todo y ganamos previsibilidad.", "result": "-30% tiempo administrativo"},
+    {"name": "Beatriz L.", "role": "Finanzas", "company": "NovaMove", "quote": "Exporto informes listos para contabilidad.", "result": "Integración SAF‑T sin dolor"}
+  ],
+  "testimonials_title": "Testimonios",
   "faq": {
     "title": "Preguntas Frecuentes",
     "items": [
       { "q": "¿Qué incluye el Plan Completo?", "a": "Sitio web, panel del conductor y del gestor, integraciones (Uber, Bolt, MyPrio, Via Verde), informes y KPIs." },
-      { "q": "¿Cuánto tarda en estar en producción?", "a": "Onboarding rápido. Normalmente entre pocos días y 2 semanas según las integraciones." },
+      { "q": "¿En cuánto tarda en estar en producción?", "a": "Onboarding rápido. Normalmente entre pocos días y 2 semanas según las integraciones." },
       { "q": "¿Puedo usar mi propia marca?", "a": "Sí. Todo el frontend se personaliza con tu identidad visual." },
-      { "q": "¿Cómo funciona el soporte?", "a": "Soporte dedicado durante la implementación y después del go-live, con SLAs definidos." }
+      { "q": "¿Cómo funciona el soporte?", "a": "Soporte dedicado durante la implementación y después del go-live, con SLAs definidos." },
+  { "q": "¿Es white‑label y exclusivo?", "a": "Sí. Entregamos con tu marca y una instancia exclusiva para tu empresa." },
+      { "q": "¿Cómo funcionan los pagos a conductores?", "a": "Cálculo automático por viaje y tarifa con informes listos para pagar." },
+      { "q": "¿Integra con contabilidad?", "a": "Sí. Exportación SAF‑T e informes financieros compatibles." },
+      { "q": "¿Qué integraciones existen?", "a": "Uber, Bolt, MyPRIO, Via Verde, Cartrack y otras bajo consulta." },
+      { "q": "¿Cómo es la seguridad?", "a": "Alojado en Vercel, con RBAC, logs y auditoría." },
+      { "q": "¿Funciona en mobile?", "a": "Sí. Interfaz responsiva y app para conductores." },
+      { "q": "¿Puedo exportar a Excel/PDF?", "a": "Sí. Exportación de paneles e informes a PDF/Excel." },
+      { "q": "¿Ofrecen soporte en portugués?", "a": "Sí, equipo local especializado en TVDE." }
     ]
   }
 }
