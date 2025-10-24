@@ -157,7 +157,7 @@ export default function Home() {
           <div className="absolute inset-0 pointer-events-none z-0">
             <Image src="/who.png" alt="" fill sizes="100vw" priority className="object-cover object-center" aria-hidden="true" />
             {/* Soft white tint so the standard logo stays readable while background still shows */}
-            <div className="absolute inset-0 reveal bg-gradient-to-b from-white/60 via-white/40 to-white/20" />
+            <div className="absolute inset-0 reveal bg-gradient-to-b from-white/40 via-black/60 to-black/20" />
           </div>
           {/* Integrated top bar (logo + language) */}
           <div className="absolute top-4 left-0 right-0 z-20">
