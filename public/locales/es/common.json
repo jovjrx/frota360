@@ -61,4 +61,52 @@
     "success": "¡Gracias! Nos pondremos en contacto pronto.",
     "error": "No se pudo enviar. Inténtalo de nuevo."
   }
+  ,
+  "seo": {
+    "title": "Frota360 – Gestión TVDE completa para flotas y conductores",
+    "description": "Todo en uno para TVDE: sitio web, panel del conductor y del gestor, integraciones (Uber, Bolt, MyPrio, Via Verde), KPIs, informes y seguridad. Solicita una demo."
+  },
+  "value": {
+    "title": "Gestión TVDE completa lista para escalar",
+    "subtitle": "Una plataforma para centralizar operación, finanzas y rendimiento.",
+    "points": [
+      "Sitio web + captación de leads",
+      "Paneles de conductor y gestor",
+      "Integraciones con Uber, Bolt, MyPrio y Via Verde"
+    ]
+  },
+  "offer": {
+    "badge": "Plan Completo",
+    "title": "Todo de Conduz, con tu marca",
+    "desc": "Incluye sitio, app del conductor, panel del gestor, integraciones e informes.",
+    "features": [
+      "Onboarding rápido y soporte dedicado",
+      "Informes y KPIs listos para decisiones",
+      "Seguridad, auditoría y cumplimiento"
+    ]
+  },
+  "kpis": {
+    "cards": [
+      {"title": "Informes y KPIs", "items": ["Ganancias, viajes, metas", "Benchmark y tendencias", "Exportar PDF/Excel"]},
+      {"title": "Pagos y Finanzas", "items": ["Suscripciones y facturación", "Pagos automáticos", "Reserva técnica"]},
+      {"title": "Seguridad y Escala", "items": ["RBAC y auditoría", "Logs y monitoreo", "Hosting en Vercel"]}
+    ]
+  },
+  "success": {
+    "title": "Casos de Éxito",
+    "industry": "TVDE / Gestión de Flotas",
+    "summary": "Conduz.pt consolidó operación, pagos y rendimiento en un único panel, reduciendo tiempo administrativo y mejorando la previsibilidad.",
+    "metrics": ["-35% tiempo operativo", "+25% precisión de pagos", "+18% metas alcanzadas"],
+    "cta": "Visitar Conduz.pt",
+    "why": {"title": "Por qué funciona", "points": ["Operación centralizada", "Integraciones confiables", "Informes accionables"]}
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      { "q": "¿Qué incluye el Plan Completo?", "a": "Sitio web, panel del conductor y del gestor, integraciones (Uber, Bolt, MyPrio, Via Verde), informes y KPIs." },
+      { "q": "¿Cuánto tarda en estar en producción?", "a": "Onboarding rápido. Normalmente entre pocos días y 2 semanas según las integraciones." },
+      { "q": "¿Puedo usar mi propia marca?", "a": "Sí. Todo el frontend se personaliza con tu identidad visual." },
+      { "q": "¿Cómo funciona el soporte?", "a": "Soporte dedicado durante la implementación y después del go-live, con SLAs definidos." }
+    ]
+  }
 }

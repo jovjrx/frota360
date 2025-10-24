@@ -1,9 +1,12 @@
 import Image from 'next/image';
+import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { COMPANY_EMAIL, WHATSAPP_NUMBER } from '@/config/site';
+import * as gtag from '@/utils/gtag';
+import * as fbq from '@/utils/fbpixel';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -48,9 +51,69 @@ export default function Home() {
   const benefits = t('benefits_list', { returnObjects: true }) as Array<{ title: string; desc: string }>;
   const howList = t('how_list', { returnObjects: true }) as Array<{ step: string; title: string; desc: string }>;
   const integrations = t('integrations_list', { returnObjects: true }) as string[];
+  const offerRef = useRef<HTMLElement | null>(null);
+  const successRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const sections: Array<{el: Element | null; label: string}> = [
+      { el: offerRef.current, label: 'offer' },
+      { el: successRef.current, label: 'success' }
+    ];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          fbq.event('ViewContent');
+          gtag.event({ action: 'view_content', category: 'engagement', label: (e.target as HTMLElement).dataset.label || 'section' });
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach((s) => { if (s.el) { (s.el as HTMLElement).dataset.label = s.label; io.observe(s.el); } });
+    return () => io.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+      <Head>
+        <title>{t('seo.title')}</title>
+        <meta name="description" content={t('seo.description')} />
+        <meta property="og:title" content={t('seo.title')} />
+        <meta property="og:description" content={t('seo.description')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/logo-fundo.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: t('brand'),
+            url: 'https://frota360.pt',
+            logo: '/logo-fundo.png',
+            sameAs: ['https://conduz.pt']
+          }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: t('brand'),
+            url: 'https://frota360.pt'
+          }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: (t('faq.items', { returnObjects: true }) as Array<{q:string; a:string}>).map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a }
+            }))
+          }) }}
+        />
+      </Head>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-sm border-b border-white/10">
         <div className="container flex items-center h-16">
           <Image src="/logo-horizontal.png" alt={t('brand')} width={180} height={40} className="h-8 w-auto" />
@@ -87,7 +150,7 @@ export default function Home() {
         </section>
 
         {/* Benefits */}
-        <section className="section bg-white/10">
+  <section className="section bg-white/10" ref={successRef as any}>
           <div className="container">
             <h2 className="text-4xl font-bold mb-4 text-center">{t('benefits')}</h2>
             <p className="text-center text-slate-300 mb-16">{t('benefits_sub')}</p>
@@ -136,14 +199,88 @@ export default function Home() {
           </div>
         </section>
 
+        {/* KPIs & Security */}
+        <section className="section bg-white/5">
+          <div className="container">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {(t('kpis.cards', { returnObjects: true }) as Array<{title: string; items: string[]}>).map((card, i) => (
+                <div key={i} className="p-6 rounded-xl border border-white/10 bg-white/5">
+                  <h3 className="text-xl font-bold mb-3">{card.title}</h3>
+                  <ul className="space-y-2 text-slate-300">
+                    {card.items.map((it, j) => (
+                      <li key={j} className="flex gap-3 items-start"><span className="mt-1 w-2 h-2 rounded-full bg-brand1" />{it}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Success Stories */}
+        <section className="section bg-white/10">
+          <div className="container">
+            <h2 className="text-4xl font-bold mb-6 text-center">{t('success.title')}</h2>
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-xl border border-white/10 bg-white/5">
+                <div className="flex items-center gap-3 mb-3">
+                  <Image src="/logos/conduz.svg" alt="Conduz.pt" width={36*3} height={36} className="h-9 w-auto" />
+                  <div>
+                    <div className="font-semibold">Conduz.pt</div>
+                    <div className="text-xs text-slate-400">{t('success.industry')}</div>
+                  </div>
+                </div>
+                <p className="text-slate-300 mb-4">{t('success.summary')}</p>
+                <ul className="space-y-2 text-slate-200 mb-4">
+                  {(t('success.metrics', { returnObjects: true }) as string[]).map((m, i) => (
+                    <li key={i} className="flex gap-3 items-start"><span className="mt-1 w-2 h-2 rounded-full bg-brand2" />{m}</li>
+                  ))}
+                </ul>
+                <a
+                  href="https://conduz.pt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-brand1 hover:underline"
+                  onClick={() => { gtag.event({ action: 'select_item', category: 'engagement', label: 'case_conduz' }); }}
+                >
+                  {t('success.cta')} →
+                </a>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <h3 className="text-xl font-bold mb-3">{t('success.why.title')}</h3>
+                <ul className="space-y-2 text-slate-300">
+                  {(t('success.why.points', { returnObjects: true }) as string[]).map((p, i) => (
+                    <li key={i} className="flex gap-3 items-start"><span className="mt-1 w-2 h-2 rounded-full bg-brand1" />{p}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="section bg-brand1">
           <div className="container text-center">
             <h2 className="text-4xl font-bold mb-4">{t('cta_title')}</h2>
             <p className="text-xl mb-8 text-blue-100">{t('cta_sub')}</p>
-            <button className="bg-white text-blue-600 hover:bg-slate-100 font-medium py-3 px-8 rounded-lg transition-colors" onClick={openForm}>
+            <button className="bg-white text-blue-600 hover:bg-slate-100 font-medium py-3 px-8 rounded-lg transition-colors" onClick={() => { fbq.event('Lead'); gtag.event({ action: 'generate_lead', category: 'engagement', label: 'cta_section' }); openForm(); }}>
               {t('request_demo')}
             </button>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="section bg-white/5">
+          <div className="container">
+            <h2 className="text-4xl font-bold mb-8 text-center">{t('faq.title')}</h2>
+            <div className="max-w-4xl mx-auto space-y-4">
+              {(t('faq.items', { returnObjects: true }) as Array<{q: string; a: string}>).map((f, i) => (
+                <details key={i} className="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <summary className="cursor-pointer font-medium">{f.q}</summary>
+                  <p className="mt-2 text-slate-300">{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
       </main>

@@ -61,4 +61,52 @@
     "success": "Obrigado! Entraremos em contacto em breve.",
     "error": "Não foi possível enviar. Tenta novamente."
   }
+  ,
+  "seo": {
+    "title": "Frota360 – Gestão TVDE completa para frotas e motoristas",
+    "description": "Tudo para TVDE: site, painel do motorista e do gestor, integrações (Uber, Bolt, MyPrio, Via Verde), KPIs, relatórios e segurança. Solicite uma demonstração."
+  },
+  "value": {
+    "title": "Gestão TVDE completa pronta para crescer",
+    "subtitle": "Uma única plataforma que centraliza operação, finanças e performance.",
+    "points": [
+      "Site institucional + captação de leads",
+      "Painel do motorista e do gestor",
+      "Integrações com Uber, Bolt, MyPrio e Via Verde"
+    ]
+  },
+  "offer": {
+    "badge": "Plano Completo",
+    "title": "Tudo do Conduz, com a sua marca",
+    "desc": "Inclui site, app do motorista, painel do gestor, integrações e relatórios.",
+    "features": [
+      "Onboarding rápido e suporte dedicado",
+      "Relatórios e KPIs prontos para decisão",
+      "Segurança, auditoria e conformidade"
+    ]
+  },
+  "kpis": {
+    "cards": [
+      {"title": "Relatórios e KPIs", "items": ["Ganhos, corridas, metas", "Benchmark e tendências", "Exportação PDF/Excel"]},
+      {"title": "Pagamentos e Finanças", "items": ["Subscrições e faturação", "Repasses automáticos", "Reserva técnica"]},
+      {"title": "Segurança e Escala", "items": ["RBAC e auditoria", "Logs e monitoramento", "Hospedagem Vercel"]}
+    ]
+  },
+  "success": {
+    "title": "Casos de Sucesso",
+    "industry": "TVDE / Gestão de Frotas",
+    "summary": "A Conduz.pt consolidou operação, repasses e performance em um único painel, reduzindo tempo administrativo e melhorando previsibilidade.",
+    "metrics": ["-35% tempo operacional", "+25% assertividade nos repasses", "+18% metas atingidas"],
+    "cta": "Ver Conduz.pt",
+    "why": {"title": "Por que funciona", "points": ["Operação centralizada", "Integrações confiáveis", "Relatórios acionáveis"]}
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      { "q": "O que está incluído no Plano Completo?", "a": "Site institucional, painel do motorista, painel do gestor, integrações (Uber, Bolt, MyPrio, Via Verde), relatórios e KPIs." },
+      { "q": "Em quanto tempo eu posso estar no ar?", "a": "O onboarding é rápido. Em geral, entre alguns dias e 2 semanas, dependendo das integrações." },
+      { "q": "Posso usar a minha própria marca?", "a": "Sim. Todo o front é personalizado com a sua identidade visual." },
+      { "q": "Como funciona o suporte?", "a": "Suporte dedicado durante a implementação e após o go-live, com SLAs definidos." }
+    ]
+  }
 }

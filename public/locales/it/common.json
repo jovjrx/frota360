@@ -61,4 +61,52 @@
     "success": "Grazie! Ti contatteremo presto.",
     "error": "Invio non riuscito. Riprova."
   }
+  ,
+  "seo": {
+    "title": "Frota360 – Gestione TVDE completa per flotte e autisti",
+    "description": "Tutto-in-uno per TVDE: sito web, pannelli per autista e manager, integrazioni (Uber, Bolt, MyPrio, Via Verde), KPI, report e sicurezza. Richiedi una demo."
+  },
+  "value": {
+    "title": "Gestione TVDE completa pronta a scalare",
+    "subtitle": "Un'unica piattaforma che centralizza operazioni, finanza e performance.",
+    "points": [
+      "Sito web + acquisizione lead",
+      "Dashboard per autista e manager",
+      "Integrazioni con Uber, Bolt, MyPrio e Via Verde"
+    ]
+  },
+  "offer": {
+    "badge": "Piano Completo",
+    "title": "Tutto da Conduz, con il tuo brand",
+    "desc": "Include sito, app autista, dashboard manager, integrazioni e report.",
+    "features": [
+      "Onboarding veloce e supporto dedicato",
+      "Report e KPI pronti per le decisioni",
+      "Sicurezza, audit e conformità"
+    ]
+  },
+  "kpis": {
+    "cards": [
+      {"title": "Report e KPI", "items": ["Guadagni, corse, obiettivi", "Benchmark e trend", "Export PDF/Excel"]},
+      {"title": "Pagamenti e Finanza", "items": ["Abbonamenti e fatturazione", "Pagamenti automatici", "Riserva tecnica"]},
+      {"title": "Sicurezza e Scalabilità", "items": ["RBAC e audit", "Log e monitoraggio", "Hosting Vercel"]}
+    ]
+  },
+  "success": {
+    "title": "Storie di Successo",
+    "industry": "TVDE / Gestione Flotte",
+    "summary": "Conduz.pt ha centralizzato operazioni, pagamenti e performance in un'unica dashboard, riducendo il tempo amministrativo e migliorando la prevedibilità.",
+    "metrics": ["-35% tempo operativo", "+25% accuratezza dei pagamenti", "+18% obiettivi raggiunti"],
+    "cta": "Visita Conduz.pt",
+    "why": {"title": "Perché funziona", "points": ["Operazioni centralizzate", "Integrazioni affidabili", "Report azionabili"]}
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "items": [
+      { "q": "Cosa include il Piano Completo?", "a": "Sito web, dashboard autista e manager, integrazioni (Uber, Bolt, MyPrio, Via Verde), report e KPI." },
+      { "q": "Quanto tempo per andare live?", "a": "Onboarding rapido. In genere da pochi giorni fino a 2 settimane in base alle integrazioni." },
+      { "q": "Posso usare il mio brand?", "a": "Sì. Tutto il frontend è personalizzato con la tua identità visiva." },
+      { "q": "Come funziona il supporto?", "a": "Supporto dedicato durante l'implementazione e dopo il go-live, con SLA definiti." }
+    ]
+  }
 }
