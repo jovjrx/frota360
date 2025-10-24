@@ -85,7 +85,20 @@ export default function Home() {
       });
     }, { threshold: 0.5 });
     sections.forEach((s) => { if (s.el) { (s.el as HTMLElement).dataset.label = s.label; io.observe(s.el); } });
-    return () => io.disconnect();
+    
+    // Reveal on scroll
+    const revealEls = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
+    const ioReveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          ioReveal.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+    revealEls.forEach((el) => ioReveal.observe(el));
+
+    return () => { io.disconnect(); ioReveal.disconnect(); };
   }, []);
 
   return (
@@ -157,15 +170,15 @@ export default function Home() {
         </div>
       </header>
 
-  <main className="pt-36">
-        {/* Hero */}
+      <main className="pt-0">
+        {/* Hero + Para quem é */}
         <section className="relative">
-          <div className="absolute inset-0 pointer-events-none -z-10">
-            <Image src="/hero.png" alt="" fill sizes="100vw" priority className="object-contain object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 pointer-events-none z-0">
+            <Image src="/who.png" alt="" fill sizes="100vw" priority className="object-cover object-center" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
           </div>
-          <div className="container py-24 min-h-[560px] flex items-center">
-            <div className="max-w-3xl">
+          <div className="container pt-24 pb-24 min-h-[calc(100vh-80px)] relative z-10 flex items-center">
+            <div className="max-w-3xl reveal">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">{t('hero_title')}</h1>
               <p className="text-xl text-slate-200 mb-8">{t('hero_subtitle')}</p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -174,27 +187,30 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Personas */}
-        <section className="relative section">
-          <div className="absolute inset-0 -z-10">
-            <Image src="/who.png" alt="" fill sizes="100vw" className="object-contain object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-black/30" />
-          </div>
-          <div className="container">
-            <h2 className="text-4xl font-bold mb-16 text-center">{t('for_who')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {personas.map((item, i) => (
-                <div key={i} className="p-8 rounded-xl border border-white/10 hover:border-brand1 transition-colors">
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-slate-300">{item.desc}</p>
-                </div>
-              ))}
+            {/* Para quem é dentro da primeira section */}
+            <div className="mt-20 max-w-3xl reveal">
+              <h2 className="text-4xl font-bold mb-6">{t('for_who')}</h2>
+              <ul className="space-y-4">
+                {personas.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-1 inline-flex w-6 h-6 items-center justify-center rounded-full bg-brand1/20 text-brand1">
+                      {/* check icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <div>
+                      <div className="font-semibold">{item.title}</div>
+                      <div className="text-slate-300 text-sm">{item.desc}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
+
+        
 
         {/* Benefits */}
         <section className="section bg-white/10" ref={successRef as any}>
@@ -214,15 +230,15 @@ export default function Home() {
 
         {/* How it Works */}
         <section className="relative section">
-          <div className="absolute inset-0 -z-10">
-            <Image src="/how.png" alt="" fill sizes="100vw" className="object-contain object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 z-0">
+            <Image src="/how.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
           </div>
-          <div className="container">
+          <div className="container relative z-10 reveal">
             <h2 className="text-4xl font-bold mb-16 text-center">{t('how_it_works')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {howList.map((item, i) => (
-                <div key={i} className="text-center">
+                <div key={i} className="text-center reveal">
                   <div className="w-16 h-16 bg-brand1 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                     {item.step}
                   </div>
@@ -270,14 +286,14 @@ export default function Home() {
 
         {/* Success Stories */}
         <section className="relative section">
-          <div className="absolute inset-0 -z-10">
-            <Image src="/results.png" alt="" fill sizes="100vw" className="object-contain object-center" aria-hidden="true" />
-            <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 z-0">
+            <Image src="/results.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
           </div>
-          <div className="container">
+          <div className="container relative z-10 reveal">
             <h2 className="text-4xl font-bold mb-6 text-center">{t('success.title')}</h2>
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5">
+              <div className="p-6 rounded-xl border border-white/10 bg-white/5 reveal">
                 <div className="flex items-center gap-3 mb-3">
                   <Image src="/logos/conduz.svg" alt="Conduz.pt" width={36 * 3} height={36} className="h-9 w-auto" />
                   <div>
@@ -301,11 +317,11 @@ export default function Home() {
                   {t('success.cta')} →
                 </a>
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-6 reveal">
                 <h3 className="text-xl font-bold mb-3">{t('success.why.title')}</h3>
                 <ul className="space-y-2 text-slate-300">
                   {(t('success.why.points', { returnObjects: true }) as string[]).map((p, i) => (
-                    <li key={i} className="flex gap-3 items-start"><span className="mt-1 w-2 h-2 rounded-full bg-brand1" />{p}</li>
+                    <li key={i} className="flex gap-3 items-start reveal"><span className="mt-1 w-2 h-2 rounded-full bg-brand1" />{p}</li>
                   ))}
                 </ul>
               </div>
@@ -341,8 +357,12 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 border-t border-white/10 py-12">
-        <div className="container">
+      <footer className="relative border-t border-white/10 py-12">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image src="/hero.png" alt="" fill sizes="100vw" className="object-cover object-center" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/10" />
+        </div>
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="font-bold mb-4">{t('brand')}</h3>

@@ -39,3 +39,10 @@ body {
   }
 }
 
+/* Simple reveal animation */
+.reveal { opacity: 0; transform: translateY(12px); }
+.reveal.in { opacity: 1; transform: translateY(0); transition: opacity .6s ease-out, transform .6s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.in { transition: none; transform: none; opacity: 1; }
+}
+
