@@ -6,12 +6,12 @@ const Banner = () => {
   const { t } = useTranslations('common')
 
   return (
-    <section className='relative pb-0 bg-[#2B2360]' id='home-section'>
+    <section className='relative pb-0 bg-[#0C193C] min-h-[75vh] max-h-[80vh]' id='home-section'>
       <div className='overflow-hidden'>
-        <div className='container lg:pt-20 pt-10 relative'>
+        <div className='container lg:pt-16 pt-8 relative'>
           <div className='relative z-10'>
-            <div className='grid grid-cols-1 lg:grid-cols-12 my-16 items-center'>
-              <div className='lg:col-span-7 mb-16' data-aos='fade-up' data-aos-duration='700'>
+            <div className='grid grid-cols-1 lg:grid-cols-12 items-center min-h-[75vh] py-8 md:py-12'>
+              <div className='lg:col-span-7 mb-8 md:mb-10' data-aos='fade-up' data-aos-duration='700'>
                 <h1 className='mb-4 lg:text-start text-center leading-tight text-4xl md:text-5xl'>
                   {t('hero_title')}
                 </h1>
@@ -35,14 +35,14 @@ const Banner = () => {
                         }
                       } catch (_) {}
                     }}
-                    className='text-xl font-semibold text-white py-4 px-6 lg:px-12 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary rounded-xl cursor-pointer'>
+                    className='text-xl font-semibold text-[#0C193C] py-4 px-6 lg:px-12 bg-white hover:bg-white/90 rounded-xl cursor-pointer'>
                     {t('request_demo')}
                   </a>
                 </div>
               </div>
-              <div className='lg:col-span-5 lg:-m-48 -m-20 overflow-hidden flex items-center justify-center' data-aos='fade-up' data-aos-duration='700' data-aos-delay='150'>
+              <div className='lg:col-span-5 overflow-hidden flex items-center justify-center bg-[#0C193C] rounded-xl h-full' data-aos='fade-up' data-aos-duration='700' data-aos-delay='150'>
                 <video
-                  className='w-full h-auto max-h-[60vh] object-contain rounded-xl'
+                  className='w-auto h-full max-w-full object-contain rounded-xl bg-[#0C193C]'
                   autoPlay
                   muted
                   playsInline

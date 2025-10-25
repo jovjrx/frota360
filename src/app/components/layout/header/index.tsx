@@ -60,7 +60,7 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
         sticky
-          ? ' shadow-lg bg-body-bg bg-banner-image py-4'
+          ? 'shadow-lg bg-[#0C193C]/90 backdrop-blur-sm py-4'
           : 'shadow-none py-6'
       }`}>
       <div>

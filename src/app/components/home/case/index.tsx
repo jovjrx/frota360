@@ -11,7 +11,7 @@ export default function CaseStudy() {
   const cta = (t('success.cta') as string) || ''
 
   return (
-    <section id='case-section' className='scroll-mt-20'>
+    <section id='case-section' className='scroll-mt-20 bg-[#13224F]'>
       <div className='container'>
         <div className='rounded-2xl border border-white/10 bg-darkmode p-6'>
           <div className='mb-3'>

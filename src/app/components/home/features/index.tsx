@@ -17,7 +17,7 @@ const Features = () => {
     setLoading(false)
   }, [])
   return (
-    <section id='features-section' className='scroll-mt-20'>
+    <section id='features-section' className='scroll-mt-20 bg-[#13224F]'>
       <div className='container relative'>
         <div className='bg-linear-to-r from-primary to-secondary absolute w-full h-full top-0 -left-1/4 blur-390'></div>
         <div className=' gap-x-4 gap-y-4 relative z-10'>

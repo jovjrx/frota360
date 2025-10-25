@@ -9,7 +9,7 @@ export default function KPIs() {
   const list: Array<{ title: string; items: string[] }> = Array.isArray(cards) ? cards : []
   if (!list.length) return null
   return (
-    <section id='kpis-section' className='scroll-mt-20 relative'>
+    <section id='kpis-section' className='scroll-mt-20 relative bg-[#13224F]'>
       <div className='bg-linear-to-r from-primary to-secondary absolute w-full h-full top-0 -left-1/4 blur-390'></div>
       <div className='container relative z-10'>
         <div className='text-center mb-8'>

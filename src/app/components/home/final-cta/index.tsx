@@ -29,7 +29,7 @@ export default function FinalCTA() {
                 }
               } catch (_) {}
             }}
-            className='inline-block text-sm font-medium text-white px-5 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary'>
+            className='inline-block text-sm font-medium text-[#0C193C] px-5 py-3 rounded-lg bg-white hover:bg-white/90'>
             {t('request_demo')}
           </a>
           <a

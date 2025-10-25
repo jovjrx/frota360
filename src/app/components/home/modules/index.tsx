@@ -11,7 +11,7 @@ export default function Modules() {
     = Array.isArray(items) ? items : []
 
   return (
-    <section id='modules-section' className='scroll-mt-20'>
+    <section id='modules-section' className='scroll-mt-20 bg-[#13224F]'>
       <div className='container'>
         <div className='text-center mb-8'>
           <h2 className='font-semibold text-3xl'>{title}</h2>

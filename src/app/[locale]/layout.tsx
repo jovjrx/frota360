@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import path from 'path'
 import { promises as fs } from 'fs'
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params?.locale || 'pt'
+// Next.js 15: params/searchParams are async. Await before accessing.
+export async function generateMetadata({ params }: { params: Promise<{ locale?: string }> }): Promise<Metadata> {
+  const { locale = 'pt' } = await params
   try {
     const file = path.join(process.cwd(), 'public', 'locales', locale, 'common.json')
     const raw = await fs.readFile(file, 'utf-8')
