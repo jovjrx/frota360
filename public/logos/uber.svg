@@ -1,5 +1,0 @@
-<!-- Uber badge (texto) -->
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40">
-  <rect width="160" height="40" rx="8" fill="#2A2E35"/>
-  <text x="80" y="26" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#EDEFF3">Uber</text>
-</svg>

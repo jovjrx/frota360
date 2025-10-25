@@ -1,5 +1,0 @@
-<!-- Bolt badge (texto) -->
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40">
-  <rect width="160" height="40" rx="8" fill="#5B5BD6"/>
-  <text x="80" y="26" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#F7F8FA">Bolt</text>
-</svg>

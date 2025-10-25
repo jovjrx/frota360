@@ -8,6 +8,7 @@ import KPIs from "./components/home/kpis";
 import Security from "./components/home/security";
 import FinalCTA from "./components/home/final-cta";
 import ContactForm from "./components/ContactForm";
+import Integrations from "./components/home/integrations";
 
 export const metadata: Metadata = {
   title: "Frota360",
@@ -18,10 +19,11 @@ export default function Home() {
     <main>
       <Banner />
       <Why />
+      <Integrations />
       <Modules />
-      <CaseStudy />
-      <KPIs />
       <Security />
+      <KPIs />
+      <CaseStudy />
       <ContactForm />
     </main>
   );

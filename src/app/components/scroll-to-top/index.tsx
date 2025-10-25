@@ -40,9 +40,8 @@ export default function ScrollToTop() {
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target='_blank'
           aria-label={t('cta_whatsapp') as string}
-          className='hidden lg:inline-flex items-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] text-sm font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap'>
-          <Icon icon='mdi:whatsapp' className='text-lg' />
-          <span>{t('cta_whatsapp')}</span>
+          className='hidden lg:inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#25D366] hover:bg-[#1DA851] text-white'>
+          <Icon icon='mdi:whatsapp' className='text-xl' />
         </Link>
         {isVisible && (
           <div

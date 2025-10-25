@@ -1,5 +1,0 @@
-<!-- myPRIO badge (texto) -->
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40">
-  <rect width="180" height="40" rx="8" fill="#13B38B"/>
-  <text x="90" y="26" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#0F1115">myPRIO</text>
-</svg>

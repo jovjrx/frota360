@@ -1,6 +1,7 @@
 "use client"
 import { useTranslations } from '@/app/hooks/useTranslations'
 import { COMPANY_EMAIL, WHATSAPP_NUMBER } from '@/config/site'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 export default function FinalCTA() {
   const { t } = useTranslations('common')
@@ -34,6 +35,7 @@ export default function FinalCTA() {
           </a>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            aria-label={t('cta_whatsapp') as string}
             onClick={() => {
               try {
                 // @ts-ignore
@@ -48,8 +50,8 @@ export default function FinalCTA() {
                 }
               } catch (_) {}
             }}
-            className='inline-block text-sm font-medium text-white px-5 py-3 rounded-lg bg-[#25D366] hover:bg-[#1DA851]'>
-            {t('cta_whatsapp')}
+            className='inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#25D366] hover:bg-[#1DA851] text-white'>
+            <Icon icon='mdi:whatsapp' className='text-xl' />
           </a>
         </div>
       </div>

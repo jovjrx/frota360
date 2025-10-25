@@ -58,10 +58,20 @@
   },
   "why_frota360": {
     "title": "Por que Frota360",
+    "subtitle": "Plataforma completa: operação centralizada, integrações confiáveis e repasses sem stress.",
+    "cards": [
+      {
+        "title": "Seus dados são seus, de mais ninguém",
+        "desc": "Os seus dados são seus: controlo total e gestão por si — ninguém melhor para gerir os seus dados"
+      },
+      {
+        "title": "Possibilidade de crescimento do seu negócio",
+        "desc": "Só com a Frota360 pode escalar o seu negócio e captar motoristas"
+      }
+    ],
     "points": [
-      "Visão operacional completa",
-      "Integração com contabilidade (SAF‑T)",
-      "Suporte em português especializado em TVDE"
+      "Os seus dados são seus: controlo total e gestão por si — ninguém melhor para gerir os seus dados",
+      "Só com a Frota360 pode escalar o seu negócio e captar motoristas"
     ]
   },
   "trust_badges": ["White-label", "Site + Acesso + Painel", "Seguro e em conformidade"],

@@ -1,5 +1,0 @@
-<!-- Via Verde badge (texto) -->
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40">
-  <rect width="180" height="40" rx="8" fill="#2A2E35"/>
-  <text x="90" y="26" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#13B38B">Via Verde</text>
-</svg>

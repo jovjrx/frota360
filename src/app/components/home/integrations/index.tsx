@@ -1,45 +1,45 @@
 'use client'
-import Image from 'next/image'
 import { useTranslations } from '@/app/hooks/useTranslations'
 
-const ICONS: Record<string, string> = {
-  uber: '/logos/uber.svg',
-  bolt: '/logos/bolt.svg',
-  myprio: '/logos/myprio.svg',
-  viaverde: '/logos/viaverde.svg',
-  cartrack: '/logos/cartrack.svg',
-}
+const LOGOS: Array<{ src: string; alt: string }> = [
+  { src: '/logos/Uber.webp', alt: 'Uber' },
+  { src: '/logos/Bolt.webp', alt: 'Bolt' },
+  { src: '/logos/Prio.webp', alt: 'MyPRIO' },
+  { src: '/logos/Via-Verde.webp', alt: 'Via Verde' },
+  { src: '/logos/Cartrack.webp', alt: 'Cartrack' },
+  { src: '/logos/BP.webp', alt: 'BP' },
+  { src: '/logos/Galp.webp', alt: 'Galp' },
+  { src: '/logos/Repsol.webp', alt: 'Repsol' },
+  { src: '/logos/edp.webp', alt: 'EDP' },
+  { src: '/logos/Auchan.webp', alt: 'Auchan' },
+  { src: '/logos/RadiusVelocity.webp', alt: 'Radius Velocity' },
+  { src: '/logos/Sfleet.webp', alt: 'SFleet' },
+]
 
 export default function Integrations() {
   const { t } = useTranslations('common')
-  const names = t('integrations_names', { returnObjects: true }) as Record<string, string>
-  const desc = t('integrations_desc', { returnObjects: true }) as Record<string, string>
-  const order = (t('integrations_list', { returnObjects: true }) as any) || []
-  const keys: string[] = Array.isArray(order)
-    ? order.map((n: string) => n.toLowerCase().replace(/\s+/g, ''))
-    : Object.keys(names || {})
+
+  const title = (t('integrations') as string) || 'Integrações'
+  const subtitle = (t('integrations_sub') as string) || ''
 
   return (
-    <section id='integrations-section' className='scroll-mt-20'>
+    <section id='integrations-section' className='scroll-mt-20 bg-[#0C193C]'>
       <div className='container'>
         <div className='text-center mb-8'>
-          <p className='text-primary font-semibold'>{t('integrations')}</p>
-          <h2 className='font-semibold text-3xl mt-1'>{t('integrations_sub')}</h2>
+          <h2 className='font-semibold text-3xl text-white'>{title}</h2>
+          {subtitle ? <p className='text-white/70 mt-2'>{subtitle}</p> : null}
         </div>
-        <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {keys.map((k) => (
-            <div key={k} className='rounded-xl border border-white/10 bg-darkmode p-6 flex gap-4 items-start'>
-              {ICONS[k] && (
-                <Image src={ICONS[k]} alt={names?.[k] || k} width={48} height={48} className='w-12 h-12' />
-              )}
-              <div>
-                <h5 className='text-white/90 font-medium'>{names?.[k] || k}</h5>
-                <p className='text-white/50 text-sm'>{desc?.[k] || ''}</p>
+        <div>
+          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4'>
+            {LOGOS.map((l, i) => (
+              <div key={i} className='rounded-xl px-4 py-3 flex items-center justify-center bg-white shadow'>
+                <img src={l.src} alt={l.alt} className='h-10 md:h-12 w-auto object-contain' />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
   )
 }
+ 

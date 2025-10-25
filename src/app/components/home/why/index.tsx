@@ -1,5 +1,6 @@
 'use client'
 import { useTranslations } from '@/app/hooks/useTranslations'
+import FeatureRowCard from '@/app/components/ui/FeatureRowCard'
 import { Icon } from '@iconify/react/dist/iconify.js'
 
 function BoolCell({ v, variant }: { v: boolean; variant: 'competitor' | 'frota' }) {
@@ -32,8 +33,16 @@ function BoolCell({ v, variant }: { v: boolean; variant: 'competitor' | 'frota' 
 export default function Why() {
   const { t } = useTranslations('common')
   const title = (t('why_frota360.title') as string) || 'Por que Frota360'
+  const subtitle = (t('why_frota360.subtitle') as string) || ''
+  const cardsData = (t('why_frota360.cards', { returnObjects: true }) as any) || []
+  const hasCardsObjects = Array.isArray(cardsData) && cardsData.length > 0 && typeof cardsData[0] === 'object'
   const points = (t('why_frota360.points', { returnObjects: true }) as any) || []
-  const list: string[] = Array.isArray(points) ? points : []
+  const listRaw: string[] = Array.isArray(points) ? points : []
+  const fallbackCards: Array<{ title: string; desc: string }> = listRaw.slice(0, 2).map((desc: string, i: number) => ({
+    title: i === 0 ? 'Seus dados são seus' : 'Crescimento do negócio',
+    desc,
+  }))
+  const cards: Array<{ title: string; desc: string }> = hasCardsObjects ? cardsData : fallbackCards
 
   const compare = t('why_compare', { returnObjects: true }) as any
   const defaultCols = ['Funcionalidade', 'Concorrente', 'Frota360']
@@ -53,17 +62,20 @@ export default function Why() {
       <div className='container'>
         <div className='text-center mb-8'>
           <h2 className='font-semibold text-3xl'>{title}</h2>
+          {subtitle ? <p className='text-white/70 mt-2'>{subtitle}</p> : null}
         </div>
-        {!!list.length && (
-          <ul className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10'>
-            {list.map((p, i) => (
-              <li
+        {!!cards.length && (
+          <div className='grid md:grid-cols-2 gap-6 mb-10 max-w-6xl mx-auto'>
+            {cards.map((c, i) => (
+              <FeatureRowCard
                 key={i}
-                className='rounded-xl p-4 text-white bg-gradient-to-r from-primary to-secondary shadow-lg shadow-black/10'>
-                • {p}
-              </li>
+                icon={i === 0 ? 'mdi:shield-check' : 'mdi:trending-up'}
+                title={c.title}
+                desc={c.desc}
+                color={i === 0 ? 'green' : 'blue'}
+              />
             ))}
-          </ul>
+          </div>
         )}
         <div className='rounded-2xl overflow-hidden' data-aos='fade-up' data-aos-duration='600'>
           <div className='overflow-x-auto'>
