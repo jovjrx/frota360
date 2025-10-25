@@ -3,8 +3,8 @@
   "cta_demo": "Request demo",
   "cta_demo_long": "Request free demo",
   "cta_whatsapp": "Chat on WhatsApp",
-  "hero_title": "Calculate payouts, send reports and pay drivers — in minutes.",
-  "hero_subtitle": "Complete suite: Website, Driver App and Manager Dashboard — with your brand, all centralized.",
+  "hero_title": "Your fleet, your control.",
+  "hero_subtitle": "Complete white‑label system: Website, Driver Access and Manager Dashboard — with your brand, integrations and security.",
   "for_who": "Who it's for",
   "benefits": "Main benefits",
   "benefits_sub": "Sell outcomes, not tech features",
@@ -12,7 +12,7 @@
   "integrations": "Integrations",
   "integrations_sub": "Connect with the leading platforms",
   "cta_title": "Simplify your TVDE operation",
-  "cta_sub": "Website + Driver App + Manager Dashboard — with your brand.",
+  "cta_sub": "Website + Driver Access + Manager Dashboard — with your brand.",
   "request_demo": "Request a demo",
   "footer_desc": "Simple, fast and profitable TVDE management.",
   "footer_product": "Product",
@@ -65,7 +65,7 @@
       "Portuguese support specialized in TVDE"
     ]
   },
-  "trust_badges": ["White-label", "Website + App + Dashboard", "Secure & compliant"],
+  "trust_badges": ["White-label", "Website + Access + Dashboard", "Secure & compliant"],
   "form": {
     "title": "Request a demo",
     "name": "Name",
@@ -97,7 +97,7 @@
   "offer": {
     "badge": "Complete Plan",
     "title": "Everything from Conduz, with your brand",
-    "desc": "Includes website, driver app, manager dashboard, integrations and reports.",
+  "desc": "Includes website, driver access, manager dashboard, integrations and reports.",
     "features": [
       "Fast onboarding and dedicated support",
       "Reports and KPIs ready for decisions",
@@ -172,5 +172,19 @@
     "status": { "pending": "Pending", "paid": "Paid" }
   }
   ,
+  "modules": {
+    "title": "Modules & Features",
+    "subtitle": "Everything you need to manage TVDE fleets and teams.",
+    "items": [
+      { "title": "Integrations", "desc": "Uber, Bolt, MyPRIO, Via Verde, Cartrack" },
+  { "title": "Driver Access", "desc": "Onboarding, chat and payout history" },
+      { "title": "Manager Dashboard", "desc": "Centralized ops and permissions (RBAC)" },
+      { "title": "Payout Automation", "desc": "Per-ride, fee and retention calculations" },
+      { "title": "Reports & KPIs", "desc": "PDF/Excel export and actionable metrics" },
+      { "title": "Accounting", "desc": "SAF‑T export and financial integrations" },
+      { "title": "Security & Audit", "desc": "Logs, monitoring and backups" },
+      { "title": "White‑label", "desc": "Website, app and dashboard with your brand" }
+    ]
+  },
   "menu_comparison": "Comparison"
 }

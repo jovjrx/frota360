@@ -3,8 +3,8 @@
   "cta_demo": "Solicitar demo",
   "cta_demo_long": "Solicitar demo gratuita",
   "cta_whatsapp": "Hablar por WhatsApp",
-  "hero_title": "Calcula pagos, envía informes y paga a conductores — en minutos.",
-  "hero_subtitle": "Suite completa: Sitio, App de Conductor y Panel del Gestor — con tu marca y todo centralizado.",
+  "hero_title": "Tu flota, tu control.",
+  "hero_subtitle": "Sistema white‑label completo: Sitio, Acceso del Conductor y Panel del Gestor — con tu marca, integraciones y seguridad.",
   "for_who": "Para quién es",
   "benefits": "Beneficios principales",
   "benefits_sub": "Vende resultados, no características técnicas",
@@ -12,7 +12,7 @@
   "integrations": "Integraciones",
   "integrations_sub": "Conecta con las principales plataformas",
   "cta_title": "Simplifica tu operación TVDE",
-  "cta_sub": "Sitio web + App de Conductor + Panel del Gestor — con tu marca.",
+  "cta_sub": "Sitio web + Acceso del Conductor + Panel del Gestor — con tu marca.",
   "request_demo": "Solicitar demostración",
   "footer_desc": "Gestión TVDE simple, rápida y rentable.",
   "footer_product": "Producto",
@@ -65,7 +65,7 @@
       "Soporte en portugués especializado en TVDE"
     ]
   },
-  "trust_badges": ["White‑label", "Sitio + App + Panel", "Seguro y conforme"],
+  "trust_badges": ["White‑label", "Sitio + Acceso + Panel", "Seguro y conforme"],
   "form": {
     "title": "Solicitar demostración",
     "name": "Nombre",
@@ -96,7 +96,7 @@
   "offer": {
     "badge": "Plan Completo",
     "title": "Todo de Conduz, con tu marca",
-    "desc": "Incluye sitio, app del conductor, panel del gestor, integraciones e informes.",
+  "desc": "Incluye sitio, acceso del conductor, panel del gestor, integraciones e informes.",
     "features": [
       "Onboarding rápido y soporte dedicado",
       "Informes y KPIs listos para decisiones",
@@ -171,5 +171,19 @@
     "status": { "pending": "Pendiente", "paid": "Pagado" }
   }
   ,
+  "modules": {
+    "title": "Módulos y Recursos",
+    "subtitle": "Todo lo necesario para gestionar flotas y equipos TVDE.",
+    "items": [
+      { "title": "Integraciones", "desc": "Uber, Bolt, MyPRIO, Via Verde, Cartrack" },
+  { "title": "Acceso del Conductor", "desc": "Alta, comunicación e historial de pagos" },
+      { "title": "Panel del Gestor", "desc": "Operación centralizada y permisos (RBAC)" },
+      { "title": "Automatización de Pagos", "desc": "Cálculo por viaje, tarifa y retención" },
+      { "title": "Informes y KPIs", "desc": "Exportación PDF/Excel y métricas accionables" },
+      { "title": "Contabilidad", "desc": "Exportación SAF‑T e integraciones financieras" },
+      { "title": "Seguridad y Auditoría", "desc": "Logs, monitoreo y backups" },
+      { "title": "White‑label", "desc": "Sitio, app y panel con tu marca" }
+    ]
+  },
   "menu_comparison": "Comparación"
 }

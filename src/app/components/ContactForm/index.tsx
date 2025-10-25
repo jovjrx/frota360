@@ -76,9 +76,16 @@ const ContactForm = () => {
   return (
     <section id='contact' className='scroll-mt-14'>
       <div className='container'>
-        <div className='relative'>
-          <h2 className='mb-9'>{t('form.title')}</h2>
-          <div className='relative border border-lightblue/35 px-6 py-2 rounded-2xl'>
+        <div className='relative' data-aos='fade-up' data-aos-duration='700'>
+          <h2 className='text-3xl font-semibold mb-2 text-center max-w-2xl mx-auto sm:leading-14'>
+            {t('form.title')}
+          </h2>
+          <p className='text-white/70 text-center mb-5'>
+            {/* Small helper text to improve conversion */}
+            {/* Uses existing strings to avoid new i18n keys */}
+            {t('cta_sub')}
+          </p>
+          <div className='relative border border-white/15 bg-darkmode/40 backdrop-blur-sm shadow-lg px-6 py-4 rounded-2xl'>
             <form
               onSubmit={handleSubmit}
               className='flex flex-wrap w-full m-auto justify-between'>

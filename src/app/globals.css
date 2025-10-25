@@ -12,9 +12,9 @@
   --color-primary: #a268ff; /* Lilás claro */
   --color-secondary: #6d3fd1; /* Lilás médio */
   --color-body-bg: #040D26; /* Mantém fundo escuro para contraste e legibilidade */
-  --color-darkmode: #2a145a; /* Superfícies escuras em lilás profundo */
-  --color-tablebg: #33186a; /* Fundo de tabela em lilás profundo */
-  --color-border: #2e165f; /* Bordas em lilás escuro */
+  --color-darkmode: #431e7c; /* Superfícies em lilás profundo (brand 'Profundo') */
+  --color-tablebg: #3a1a6f; /* Fundo de tabela em lilás profundo */
+  --color-border: #381a6a; /* Bordas em lilás escuro */
   --color-lightblue: #cbb6ff; /* Neutro claro lilás (mantém nome por compatibilidade) */
   --color-lightsky: #F2ECFF; /* Título claro em lilás */
   --color-lightpurple: #D7C9FF; /* Acento claro lilás */

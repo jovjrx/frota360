@@ -3,8 +3,8 @@
   "cta_demo": "Pedir demo",
   "cta_demo_long": "Pedir demo gratuita",
   "cta_whatsapp": "Falar no WhatsApp",
-  "hero_title": "Calcule pagamentos, envie relatórios e pague motoristas — em minutos.",
-  "hero_subtitle": "Suite completa: Site, App do Motorista e Painel do Gestor — com a sua marca e tudo centralizado.",
+  "hero_title": "A sua frota, o seu controlo.",
+  "hero_subtitle": "Sistema white‑label completo: Site, Acesso do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.",
   "for_who": "Para quem é",
   "benefits": "Benefícios principais",
   "benefits_sub": "Venda resultado, não recurso técnico",
@@ -12,7 +12,7 @@
   "integrations": "Integrações",
   "integrations_sub": "Conecta com as principais plataformas",
   "cta_title": "Simplifica a tua operação TVDE",
-  "cta_sub": "Site + App do Motorista + Painel do Gestor — com sua marca.",
+  "cta_sub": "Site + Acesso do Motorista + Painel do Gestor — com sua marca.",
   "request_demo": "Solicitar demonstração",
   "footer_desc": "Gestão TVDE simples, rápida e rentável.",
   "footer_product": "Produto",
@@ -64,7 +64,7 @@
       "Suporte em português especializado em TVDE"
     ]
   },
-  "trust_badges": ["White-label", "Site + App + Painel", "Seguro e em conformidade"],
+  "trust_badges": ["White-label", "Site + Acesso + Painel", "Seguro e em conformidade"],
   "form": {
     "title": "Solicitar demonstração",
     "name": "Nome",
@@ -96,7 +96,7 @@
   "offer": {
     "badge": "Plano Completo",
     "title": "Tudo do Conduz, com a sua marca",
-    "desc": "Inclui site, app do motorista, painel do gestor, integrações e relatórios.",
+  "desc": "Inclui site, acesso do motorista, painel do gestor, integrações e relatórios.",
     "features": [
       "Onboarding rápido e suporte dedicado",
       "Relatórios e KPIs prontos para decisão",
@@ -117,7 +117,7 @@
     "subtitle": "Não é planilha. É sistema seguro com auditoria e controlo de acesso.",
     "items": [
       { "title": "RBAC e auditoria", "desc": "Perfis de acesso, logs de ações e trilha de auditoria." },
-      { "title": "Infra na Vercel", "desc": "Hospedagem global, SSL/TLS, redundância e monitoramento." },
+      { "title": "Hospedagem e controlo", "desc": "Infraestrutura gerida com SSL/TLS, redundância e monitorização." },
       { "title": "Backups e exportação", "desc": "Backups regulares e exportação de dados sob pedido." }
     ]
   },
@@ -139,7 +139,7 @@
     "industry": "TVDE / Gestão de Frotas",
     "summary": "A Conduz.pt consolidou operação, repasses e performance em um único painel, reduzindo tempo administrativo e melhorando previsibilidade.",
     "metrics": ["-35% tempo operacional", "+25% assertividade nos repasses", "+18% metas atingidas"],
-    "cta": "Ver Conduz.pt",
+    "cta": "Conduz.pt",
     "why": {"title": "Por que funciona", "points": ["Operação centralizada", "Integrações confiáveis", "Relatórios acionáveis"]}
   },
   "testimonials": [
@@ -151,18 +151,16 @@
   "faq": {
     "title": "Perguntas Frequentes",
     "items": [
-      { "q": "O que está incluído no Plano Completo?", "a": "Site institucional, painel do motorista, painel do gestor, integrações (Uber, Bolt, MyPrio, Via Verde), relatórios e KPIs." },
-      { "q": "Em quanto tempo eu posso estar no ar?", "a": "O onboarding é rápido. Em geral, entre alguns dias e 2 semanas, dependendo das integrações." },
-      { "q": "Posso usar a minha própria marca?", "a": "Sim. Todo o front é personalizado com a sua identidade visual." },
-      { "q": "Como funciona o suporte?", "a": "Suporte dedicado durante a implementação e após o go-live, com SLAs definidos." },
-  { "q": "É white-label e exclusivo?", "a": "Sim. Entregamos com a sua marca e instância exclusiva para a sua empresa." },
-      { "q": "Como funcionam os repasses?", "a": "O sistema calcula automaticamente por corrida e taxa, gerando relatórios prontos para pagamento." },
-      { "q": "Integra com contabilidade?", "a": "Sim. Exportação SAF‑T e relatórios financeiros compatíveis." },
-      { "q": "Quais integrações estão disponíveis?", "a": "Uber, Bolt, MyPRIO, Via Verde, Cartrack, e outras sob consulta." },
-      { "q": "Como é a segurança dos dados?", "a": "Hospedagem na Vercel, controles de acesso (RBAC), logs e auditoria." },
-      { "q": "Funciona em mobile?", "a": "Sim. Interface responsiva e app para motoristas." },
-      { "q": "Posso exportar para Excel/PDF?", "a": "Sim. Exportação de relatórios e dashboards para PDF/Excel." },
-      { "q": "Consigo suporte em português?", "a": "Sim, equipa local especializada em TVDE." }
+      { "q": "Como funciona na prática?", "a": "Conectamos as integrações (Uber, Bolt, etc.), centralizamos os dados no painel e automatizamos os repasses e relatórios." },
+      { "q": "O que diferencia a Frota360?", "a": "Segurança (RBAC e auditoria), white‑label completo, integrações confiáveis e KPIs prontos para decisão." },
+      { "q": "Quanto tempo para entrar no ar?", "a": "Onboarding rápido — normalmente entre alguns dias e 2 semanas, conforme as integrações." },
+      { "q": "Posso usar a minha própria marca?", "a": "Sim. Site, app e painel com a sua marca (white‑label)." },
+      { "q": "Quem controla a hospedagem?", "a": "Ambiente hospedado e monitorizado com SSL/TLS, redundância e controlo sob sua gestão." },
+      { "q": "Integra com contabilidade?", "a": "Sim. Exportação SAF‑T e relatórios compatíveis para o financeiro." },
+      { "q": "Como funcionam os repasses?", "a": "Cálculo automático por corrida, taxa e retenções, com relatórios prontos para pagamento." },
+      { "q": "Como é o suporte?", "a": "Suporte dedicado durante a implementação e pós go‑live, com SLAs definidos." },
+      { "q": "Posso exportar relatórios?", "a": "Sim. Exportação de dashboards e relatórios para PDF/Excel." },
+      { "q": "E a privacidade dos dados?", "a": "Temos controlo de acesso (RBAC), logs e trilha de auditoria, além de backups regulares." }
     ]
   },
   "table": {
@@ -171,5 +169,19 @@
     "status": { "pending": "Pendente", "paid": "Pago" }
   }
   ,
+  "modules": {
+    "title": "Módulos e Recursos",
+    "subtitle": "Tudo o que precisa para gerir frotas e equipas em TVDE.",
+    "items": [
+      { "title": "Integrações", "desc": "Uber, Bolt, MyPRIO, Via Verde, Cartrack" },
+  { "title": "Acesso do Motorista", "desc": "Registo, comunicação e histórico de pagamentos" },
+      { "title": "Painel do Gestor", "desc": "Operação centralizada e permissões (RBAC)" },
+      { "title": "Automação de Repasses", "desc": "Cálculo por corrida, taxa e retenção" },
+      { "title": "Relatórios e KPIs", "desc": "Exportação em PDF/Excel e métricas acionáveis" },
+      { "title": "Contabilidade", "desc": "Exportação SAF‑T e integrações financeiras" },
+      { "title": "Segurança e Auditoria", "desc": "Logs, monitorização e backups" },
+      { "title": "White‑label", "desc": "Site, app e painel com a sua marca" }
+    ]
+  },
   "menu_comparison": "Comparação"
 }

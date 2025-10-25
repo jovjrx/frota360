@@ -28,6 +28,20 @@ export default function LanguageSwitcher() {
       parts.unshift(code)
     }
     const next = '/' + parts.join('/')
+    try {
+      // GA4
+      // @ts-ignore
+      if (typeof window !== 'undefined' && window.gtag) {
+        // @ts-ignore
+        window.gtag('event', 'language_change', { to: code, from: locale })
+      }
+      // Meta Pixel
+      // @ts-ignore
+      if (typeof window !== 'undefined' && window.fbq) {
+        // @ts-ignore
+        window.fbq('trackCustom', 'LanguageChange', { to: code, from: locale })
+      }
+    } catch (_) {}
     router.push(next)
     setOpen(false)
   }

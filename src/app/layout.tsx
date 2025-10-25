@@ -10,11 +10,21 @@ import Footer from './components/layout/footer'
 const font = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt'),
   title: 'Frota360',
   icons: {
     icon: '/logo-64-branco.png',
     shortcut: '/logo-64-branco.png',
     apple: '/logo-64-branco.png',
+  },
+  description: 'Gestão TVDE white‑label completa: Website, App do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.',
+  openGraph: {
+    title: 'Frota360 — Gestão TVDE completa',
+    description: 'Website, App do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt',
+    siteName: 'Frota360',
+    images: ['/logo-64-branco.png'],
+    type: 'website',
   },
 }
 
@@ -25,6 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt' suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/logo-64-branco.png" />
+        <link rel="apple-touch-icon" href="/logo-64-branco.png" />
+      </head>
       <body className={`${font.className}`}>
         <Aoscompo>
           {/* GA4 */}
@@ -67,6 +81,14 @@ export default function RootLayout({
           <Footer />
         </Aoscompo>
         <Analytics />
+        {/* JSON-LD Organization */}
+        <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'Frota360',
+          url: process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt',
+          logo: (process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt') + '/logo-64-branco.png'
+        })}</Script>
         <ScrollToTop />
       </body>
     </html>

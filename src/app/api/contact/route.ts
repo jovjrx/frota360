@@ -11,6 +11,16 @@ export async function POST(req: NextRequest) {
 
     const subject = `[${SITE_NAME}] Novo pedido de demonstração`
     const text = `Novo pedido de contato\n\nNome: ${name || ''}\nEmpresa: ${company || ''}\nTamanho da frota: ${fleet_size || ''}\nEmail: ${email}\nTelefone: ${phone || ''}\n\nMensagem:\n${message}`
+    const html = `
+      <h2>Novo pedido de demonstração</h2>
+      <p><strong>Nome:</strong> ${name || ''}</p>
+      <p><strong>Empresa:</strong> ${company || ''}</p>
+      <p><strong>Tamanho da frota:</strong> ${fleet_size || ''}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Telefone:</strong> ${phone || ''}</p>
+      <p><strong>Mensagem:</strong></p>
+      <pre style="white-space:pre-wrap">${message || ''}</pre>
+    `
 
     if (!RESEND_API_KEY) {
       // No email provider configured – accept for now.
@@ -29,6 +39,8 @@ export async function POST(req: NextRequest) {
         to: [MAIL_TO],
         subject,
         text,
+        html,
+        reply_to: email,
       }),
     })
 

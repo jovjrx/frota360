@@ -3,8 +3,8 @@
   "cta_demo": "Richiedi demo",
   "cta_demo_long": "Richiedi demo gratuita",
   "cta_whatsapp": "Parla su WhatsApp",
-  "hero_title": "Calcola pagamenti, invia report e paga gli autisti — in pochi minuti.",
-  "hero_subtitle": "Suite completa: Sito, App Conducente e Dashboard Manager — con il tuo brand e tutto centralizzato.",
+  "hero_title": "La tua flotta, il tuo controllo.",
+  "hero_subtitle": "Sistema white‑label completo: Sito, Accesso Conducente e Dashboard Manager — con il tuo brand, integrazioni e sicurezza.",
   "for_who": "Per chi è",
   "benefits": "Benefici principali",
   "benefits_sub": "Vendi risultati, non funzionalità tecniche",
@@ -12,7 +12,7 @@
   "integrations": "Integrazioni",
   "integrations_sub": "Connettiti alle principali piattaforme",
   "cta_title": "Semplifica la tua operazione TVDE",
-  "cta_sub": "Sito web + App Conducente + Dashboard Manager — con il tuo brand.",
+  "cta_sub": "Sito web + Accesso Conducente + Dashboard Manager — con il tuo brand.",
   "request_demo": "Richiedi una demo",
   "footer_desc": "Gestione TVDE semplice, veloce e redditizia.",
   "footer_product": "Prodotto",
@@ -65,7 +65,7 @@
       "Supporto in portoghese specializzato in TVDE"
     ]
   },
-  "trust_badges": ["White‑label", "Sito + App + Dashboard", "Sicuro e conforme"],
+  "trust_badges": ["White‑label", "Sito + Accesso + Dashboard", "Sicuro e conforme"],
   "form": {
     "title": "Richiedi una demo",
     "name": "Nome",
@@ -97,7 +97,7 @@
   "offer": {
     "badge": "Piano Completo",
     "title": "Tutto da Conduz, con il tuo brand",
-    "desc": "Include sito, app autista, dashboard manager, integrazioni e report.",
+  "desc": "Include sito, accesso autista, dashboard manager, integrazioni e report.",
     "features": [
       "Onboarding veloce e supporto dedicato",
       "Report e KPI pronti per le decisioni",
@@ -164,5 +164,19 @@
     "status": { "pending": "In attesa", "paid": "Pagato" }
   }
   ,
+  "modules": {
+    "title": "Moduli e Funzionalità",
+    "subtitle": "Tutto ciò che serve per gestire flotte e team TVDE.",
+    "items": [
+      { "title": "Integrazioni", "desc": "Uber, Bolt, MyPRIO, Via Verde, Cartrack" },
+  { "title": "Accesso Conducente", "desc": "Onboarding, comunicazione e storico pagamenti" },
+      { "title": "Dashboard Manager", "desc": "Operazioni centralizzate e permessi (RBAC)" },
+      { "title": "Automazione Pagamenti", "desc": "Calcolo per corsa, tariffa e ritenzione" },
+      { "title": "Report e KPI", "desc": "Export PDF/Excel e metriche azionabili" },
+      { "title": "Contabilità", "desc": "Export SAF‑T e integrazioni finanziarie" },
+      { "title": "Sicurezza e Audit", "desc": "Log, monitoraggio e backup" },
+      { "title": "White‑label", "desc": "Sito, app e dashboard con il tuo brand" }
+    ]
+  },
   "menu_comparison": "Confronto"
 }

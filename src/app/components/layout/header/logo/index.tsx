@@ -7,9 +7,9 @@ const Logo: React.FC = () => {
       <Image
         src="/logo-horizontal-branca.png"
         alt="Frota360"
-        width={180}
-        height={48}
-        style={{ width: "auto", height: "auto" }}
+        width={170}
+        height={60}
+        className="h-12 w-auto"
         quality={100}
         priority
       />

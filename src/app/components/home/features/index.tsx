@@ -26,10 +26,7 @@ const Features = () => {
             <p className='text-primary text-base sm:text-lg font-semibold mb-4 text-center'>
               {t('benefits')}
             </p>
-            <h2 className='font-semibold mb-6 text-center max-w-2xl mx-auto sm:leading-14 capitalize'>
-              {t('benefits_sub')}
-            </h2>
-            {/* Optional supporting text can be added via translations if needed */}
+            {/* Removed secondary header per request */}
           </div>
           {/* Column-2 */}
           <div>
@@ -40,7 +37,7 @@ const Features = () => {
                   ))
                 : featuresdata?.map((items, i) => (
                     <div
-                      className='bg-darkmode p-8 rounded-lg flex flex-col gap-3'
+                      className={`p-8 rounded-lg flex flex-col gap-3 border ${i % 2 === 0 ? 'bg-primary/10 border-primary/20' : 'bg-secondary/10 border-secondary/20'}`}
                       key={i}>
                       <div className='rounded-full bg-linear-to-r from-primary to-secondary w-fit p-4 flex items-center justify-center'>
                         <Image
