@@ -21,6 +21,7 @@
   "footer_demo": "Demo",
   "footer_contact": "Contacto",
   "footer_madeby": "Un producto de Alvorada Magistral",
+  "footer_brandline": "Frota360 — Un producto de Alvorada Magistral",
   "copyright": "© 2025 Frota360. Todos los derechos reservados.",
   "personas": [
     { "title": "Gestores de Flotas", "desc": "Necesitan control total e informes automáticos." },
@@ -40,6 +41,7 @@
     { "step": "2", "title": "Centraliza la gestión", "desc": "Todos los datos en un panel intuitivo." },
     { "step": "3", "title": "Automatiza pagos", "desc": "Cálculos automáticos e informes en tiempo real." }
   ],
+  "how_intro": "Empieza fácil: conecta plataformas, centraliza datos y automatiza pagos — todo en un solo lugar.",
   "integrations_list": ["Uber", "Bolt", "MyPRIO", "Via Verde", "Cartrack"],
   "integrations_names": {
     "uber": "Uber",
@@ -102,10 +104,34 @@
     ]
   },
   "kpis": {
+    "title": "KPIs e Informes",
+    "subtitle": "Métricas accionables y exportaciones listas para decidir.",
     "cards": [
       {"title": "Informes y KPIs", "items": ["Ganancias, viajes, metas", "Benchmark y tendencias", "Exportar PDF/Excel"]},
       {"title": "Pagos y Finanzas", "items": ["Suscripciones y facturación", "Pagos automáticos", "Reserva técnica"]},
       {"title": "Seguridad y Escala", "items": ["RBAC y auditoría", "Logs y monitoreo", "Hosting en Vercel"]}
+    ]
+  },
+  "security": {
+    "title": "Seguridad y Confiabilidad",
+    "subtitle": "No es una planilla. Es un sistema seguro con auditoría y control de acceso.",
+    "items": [
+      { "title": "RBAC y auditoría", "desc": "Perfiles de acceso, logs de acciones y trazabilidad." },
+      { "title": "Infraestructura en Vercel", "desc": "Hosting global, SSL/TLS, redundancia y monitoreo." },
+      { "title": "Backups y exportación", "desc": "Backups periódicos y exportación de datos a pedido." }
+    ]
+  },
+  "why_compare": {
+    "title": "Por qué elegir Frota360 vs Competidor",
+    "columns": ["Funcionalidad", "Competidor", "Frota360"],
+    "rows": [
+      {"feature": "Sitio web y marca propia", "spreadsheet": false, "frota360": true},
+      {"feature": "App de conductor y panel gestor", "spreadsheet": false, "frota360": true},
+      {"feature": "Integraciones (Uber, Bolt, MyPRIO, Via Verde)", "spreadsheet": true, "frota360": true},
+      {"feature": "Cálculo automático de pagos", "spreadsheet": true, "frota360": true},
+      {"feature": "KPIs e informes exportables", "spreadsheet": true, "frota360": true},
+      {"feature": "Seguridad, RBAC y auditoría", "spreadsheet": false, "frota360": true},
+      {"feature": "Soporte dedicado en portugués", "spreadsheet": false, "frota360": true}
     ]
   },
   "success": {
@@ -138,5 +164,12 @@
       { "q": "¿Puedo exportar a Excel/PDF?", "a": "Sí. Exportación de paneles e informes a PDF/Excel." },
       { "q": "¿Ofrecen soporte en portugués?", "a": "Sí, equipo local especializado en TVDE." }
     ]
+  },
+  "table": {
+    "title": "Empleados y Pagos",
+    "headers": ["#", "Empleado", "Viajes", "Ganancias", "Pago", "Estado"],
+    "status": { "pending": "Pendiente", "paid": "Pagado" }
   }
+  ,
+  "menu_comparison": "Comparación"
 }

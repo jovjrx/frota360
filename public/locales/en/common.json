@@ -21,6 +21,7 @@
   "footer_demo": "Demo",
   "footer_contact": "Contact",
   "footer_madeby": "A product by Alvorada Magistral",
+  "footer_brandline": "Frota360 — A product by Alvorada Magistral",
   "copyright": "© 2025 Frota360. All rights reserved.",
   "personas": [
     { "title": "Fleet Managers", "desc": "Need full control and automatic reports." },
@@ -40,6 +41,7 @@
     { "step": "2", "title": "Centralize management", "desc": "All data in a single intuitive dashboard." },
     { "step": "3", "title": "Automate payouts", "desc": "Automatic calculations and real-time reports." }
   ],
+  "how_intro": "Getting started is easy: connect your platforms, centralize data, and automate payouts — all in one place.",
   "integrations_list": ["Uber", "Bolt", "MyPRIO", "Via Verde", "Cartrack"],
   "integrations_names": {
     "uber": "Uber",
@@ -103,10 +105,34 @@
     ]
   },
   "kpis": {
+    "title": "KPIs & Reports",
+    "subtitle": "Actionable metrics and exports ready for decisions.",
     "cards": [
       {"title": "Reports & KPIs", "items": ["Earnings, rides, goals", "Benchmark & trends", "Export PDF/Excel"]},
       {"title": "Payments & Finance", "items": ["Subscriptions and billing", "Automatic payouts", "Technical reserve"]},
       {"title": "Security & Scale", "items": ["RBAC and auditing", "Logs and monitoring", "Vercel hosting"]}
+    ]
+  },
+  "security": {
+    "title": "Security & Reliability",
+    "subtitle": "Not a spreadsheet. A secure system with auditing and access control.",
+    "items": [
+      { "title": "RBAC & auditing", "desc": "Access roles, action logs and audit trail." },
+      { "title": "Vercel infrastructure", "desc": "Global hosting, SSL/TLS, redundancy and monitoring." },
+      { "title": "Backups & export", "desc": "Regular backups and data export on request." }
+    ]
+  },
+  "why_compare": {
+    "title": "Why choose Frota360 vs Competitor",
+    "columns": ["Feature", "Competitor", "Frota360"],
+    "rows": [
+      {"feature": "Website and own brand", "spreadsheet": false, "frota360": true},
+      {"feature": "Driver app and manager dashboard", "spreadsheet": false, "frota360": true},
+      {"feature": "Integrations (Uber, Bolt, MyPRIO, Via Verde)", "spreadsheet": true, "frota360": true},
+      {"feature": "Automatic payout calculation", "spreadsheet": true, "frota360": true},
+      {"feature": "KPIs and exportable reports", "spreadsheet": true, "frota360": true},
+      {"feature": "Security, RBAC and auditing", "spreadsheet": false, "frota360": true},
+      {"feature": "Dedicated Portuguese support", "spreadsheet": false, "frota360": true}
     ]
   },
   "success": {
@@ -139,5 +165,12 @@
       { "q": "Can I export to Excel/PDF?", "a": "Yes. Export dashboards and reports to PDF/Excel." },
       { "q": "Do you offer Portuguese support?", "a": "Yes, local team specialized in TVDE." }
     ]
+  },
+  "table": {
+    "title": "Employees & Payments",
+    "headers": ["#", "Employee", "Rides", "Earnings", "Payout", "Status"],
+    "status": { "pending": "Pending", "paid": "Paid" }
   }
+  ,
+  "menu_comparison": "Comparison"
 }

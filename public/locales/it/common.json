@@ -21,6 +21,7 @@
   "footer_demo": "Demo",
   "footer_contact": "Contatto",
   "footer_madeby": "Un prodotto di Alvorada Magistral",
+  "footer_brandline": "Frota360 — Un prodotto di Alvorada Magistral",
   "copyright": "© 2025 Frota360. Tutti i diritti riservati.",
   "personas": [
     { "title": "Gestori di Flotte", "desc": "Hanno bisogno di controllo totale e report automatici." },
@@ -40,6 +41,7 @@
     { "step": "2", "title": "Centralizza la gestione", "desc": "Tutti i dati in un unico pannello intuitivo." },
     { "step": "3", "title": "Automatizza i pagamenti", "desc": "Calcoli automatici e report in tempo reale." }
   ],
+  "how_intro": "Parti in modo semplice: collega le piattaforme, centralizza i dati e automatizza i pagamenti — tutto in un unico posto.",
   "integrations_list": ["Uber", "Bolt", "MyPRIO", "Via Verde", "Cartrack"],
   "integrations_names": {
     "uber": "Uber",
@@ -103,10 +105,34 @@
     ]
   },
   "kpis": {
+    "title": "KPI e Report",
+    "subtitle": "Metriche azionabili ed export pronti per le decisioni.",
     "cards": [
       {"title": "Report e KPI", "items": ["Guadagni, corse, obiettivi", "Benchmark e trend", "Export PDF/Excel"]},
       {"title": "Pagamenti e Finanza", "items": ["Abbonamenti e fatturazione", "Pagamenti automatici", "Riserva tecnica"]},
       {"title": "Sicurezza e Scalabilità", "items": ["RBAC e audit", "Log e monitoraggio", "Hosting Vercel"]}
+    ]
+  },
+  "security": {
+    "title": "Sicurezza e Affidabilità",
+    "subtitle": "Non è un foglio di calcolo. È un sistema sicuro con audit e controllo accessi.",
+    "items": [
+      { "title": "RBAC e audit", "desc": "Ruoli di accesso, log azioni e traccia di audit." },
+      { "title": "Infrastruttura Vercel", "desc": "Hosting globale, SSL/TLS, ridondanza e monitoraggio." },
+      { "title": "Backup ed export", "desc": "Backup regolari ed esportazione dati su richiesta." }
+    ]
+  },
+  "why_compare": {
+    "title": "Perché scegliere Frota360 vs Concorrente",
+    "columns": ["Funzionalità", "Concorrente", "Frota360"],
+    "rows": [
+      {"feature": "Sito e brand proprio", "spreadsheet": false, "frota360": true},
+      {"feature": "App autista e dashboard manager", "spreadsheet": false, "frota360": true},
+      {"feature": "Integrazioni (Uber, Bolt, MyPRIO, Via Verde)", "spreadsheet": true, "frota360": true},
+      {"feature": "Calcolo automatico pagamenti", "spreadsheet": true, "frota360": true},
+      {"feature": "KPI e report esportabili", "spreadsheet": true, "frota360": true},
+      {"feature": "Sicurezza, RBAC e audit", "spreadsheet": false, "frota360": true},
+      {"feature": "Supporto dedicato in portoghese", "spreadsheet": false, "frota360": true}
     ]
   },
   "success": {
@@ -131,5 +157,12 @@
       { "q": "Posso usare il mio brand?", "a": "Sì. Tutto il frontend è personalizzato con la tua identità visiva." },
       { "q": "Come funziona il supporto?", "a": "Supporto dedicato durante l'implementazione e dopo il go-live, con SLA definiti." }
     ]
+  },
+  "table": {
+    "title": "Dipendenti e Pagamenti",
+    "headers": ["#", "Dipendente", "Corse", "Guadagni", "Pagamento", "Stato"],
+    "status": { "pending": "In attesa", "paid": "Pagato" }
   }
+  ,
+  "menu_comparison": "Confronto"
 }

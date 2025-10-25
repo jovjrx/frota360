@@ -21,6 +21,7 @@
   "footer_demo": "Demo",
   "footer_contact": "Contacto",
   "footer_madeby": "Um produto Alvorada Magistral",
+  "footer_brandline": "Frota360 — Um produto Alvorada Magistral",
   "copyright": "© 2025 Frota360. Todos os direitos reservados.",
   "personas": [
     { "title": "Gestores de Frotas", "desc": "Precisam de controlo total e relatórios automáticos." },
@@ -103,10 +104,34 @@
     ]
   },
   "kpis": {
+    "title": "KPIs e Relatórios",
+    "subtitle": "Métricas acionáveis e exportações prontas para decisão.",
     "cards": [
       {"title": "Relatórios e KPIs", "items": ["Ganhos, corridas, metas", "Benchmark e tendências", "Exportação PDF/Excel"]},
       {"title": "Pagamentos e Finanças", "items": ["Subscrições e faturação", "Repasses automáticos", "Reserva técnica"]},
       {"title": "Segurança e Escala", "items": ["RBAC e auditoria", "Logs e monitoramento", "Hospedagem Vercel"]}
+    ]
+  },
+  "security": {
+    "title": "Segurança e Confiabilidade",
+    "subtitle": "Não é planilha. É sistema seguro com auditoria e controlo de acesso.",
+    "items": [
+      { "title": "RBAC e auditoria", "desc": "Perfis de acesso, logs de ações e trilha de auditoria." },
+      { "title": "Infra na Vercel", "desc": "Hospedagem global, SSL/TLS, redundância e monitoramento." },
+      { "title": "Backups e exportação", "desc": "Backups regulares e exportação de dados sob pedido." }
+    ]
+  },
+  "why_compare": {
+    "title": "Por que escolher a Frota360 vs Concorrente",
+    "columns": ["Funcionalidade", "Concorrente", "Frota360"],
+    "rows": [
+      {"feature": "Website e marca própria", "spreadsheet": false, "frota360": true},
+      {"feature": "App do motorista e painel do gestor", "spreadsheet": false, "frota360": true},
+      {"feature": "Integrações (Uber, Bolt, MyPRIO, Via Verde)", "spreadsheet": true, "frota360": true},
+      {"feature": "Cálculo automático de repasses", "spreadsheet": true, "frota360": true},
+      {"feature": "KPIs e relatórios exportáveis", "spreadsheet": true, "frota360": true},
+      {"feature": "Segurança, RBAC e auditoria", "spreadsheet": false, "frota360": true},
+      {"feature": "Suporte dedicado em português", "spreadsheet": false, "frota360": true}
     ]
   },
   "success": {
@@ -139,5 +164,12 @@
       { "q": "Posso exportar para Excel/PDF?", "a": "Sim. Exportação de relatórios e dashboards para PDF/Excel." },
       { "q": "Consigo suporte em português?", "a": "Sim, equipa local especializada em TVDE." }
     ]
+  },
+  "table": {
+    "title": "Funcionários e Pagamentos",
+    "headers": ["#", "Funcionário", "Corridas", "Ganhos", "Pagamento", "Status"],
+    "status": { "pending": "Pendente", "paid": "Pago" }
   }
+  ,
+  "menu_comparison": "Comparação"
 }
