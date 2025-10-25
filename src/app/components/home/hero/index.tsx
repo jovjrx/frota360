@@ -18,6 +18,23 @@ const Banner = () => {
 
   const { t } = useTranslations('common')
 
+  const handleWhatsAppClick = () => {
+    try {
+      // GA4
+      // @ts-ignore
+      if (typeof window !== 'undefined' && window.gtag) {
+        // @ts-ignore
+        window.gtag('event', 'whatsapp_click', { location: 'hero' })
+      }
+      // Meta Pixel
+      // @ts-ignore
+      if (typeof window !== 'undefined' && window.fbq) {
+        // @ts-ignore
+        window.fbq('trackCustom', 'WhatsAppClick', { location: 'hero' })
+      }
+    } catch (_) {}
+  }
+
   return (
     <section className='relative pb-0' id='home-section'>
       <div className='bg-banner-image absolute w-full h-full top-0 blur-390'></div>
@@ -32,9 +49,16 @@ const Banner = () => {
                 <p className='text-white font-normal mb-10 max-w-[70%] lg:text-start text-center lg:mx-0 mx-auto'>
                   {t('hero_subtitle')}
                 </p>
-                <div className='flex align-middle justify-center lg:justify-start'>
-                  <a href={`mailto:${COMPANY_EMAIL}`} className='text-xl font-semibold text-white py-4 px-6 lg:px-12 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary rounded-xl mr-6 cursor-pointer'>
+                <div className='flex align-middle justify-center lg:justify-start gap-4'>
+                  <a href={`mailto:${COMPANY_EMAIL}`} className='text-xl font-semibold text-white py-4 px-6 lg:px-12 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary rounded-xl cursor-pointer'>
                     {t('request_demo')}
+                  </a>
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    onClick={handleWhatsAppClick}
+                    aria-label={t('cta_whatsapp') as string}
+                    className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/20 text-white hover:text-primary hover:border-primary transition'>
+                    <Icon icon='mdi:whatsapp' className='text-2xl' />
                   </a>
                   <button
                     onClick={openModal}
@@ -43,10 +67,10 @@ const Banner = () => {
                       src={'/images/banner/playbutton.svg'}
                       alt='button-image'
                       className='mr-3'
-                      width={47}
-                      height={47}
+                      width={32}
+                      height={32}
                     />
-                    <span className='hover:text-primary'>{t('how_it_works')}</span>
+                    <span className='hover:text-primary text-sm'>{t('how_it_works')}</span>
                   </button>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import type { Metadata } from 'next'
 import './globals.css'
 import Aoscompo from '@/lib/utils/aos'
 import Analytics from './analytics/Analytics'
@@ -7,6 +8,15 @@ import ScrollToTop from './components/scroll-to-top'
 import Header from './components/layout/header'
 import Footer from './components/layout/footer'
 const font = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Frota360',
+  icons: {
+    icon: '/logo-64-branco.png',
+    shortcut: '/logo-64-branco.png',
+    apple: '/logo-64-branco.png',
+  },
+}
 
 export default function RootLayout({
   children,

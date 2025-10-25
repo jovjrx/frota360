@@ -1,9 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { WHATSAPP_NUMBER } from '@/config/site'
+import { useTranslations } from '@/app/hooks/useTranslations'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
+  const { t } = useTranslations('common')
 
   // Top: 0 takes us all the way back to the top of the page
   // Behavior: smooth keeps it smooth!
@@ -33,12 +37,12 @@ export default function ScrollToTop() {
     <div className='fixed bottom-8 right-8 z-999'>
       <div className='flex items-center gap-2.5'>
         <Link
-          href={
-            'https://getnextjstemplates.com/products/crypto-free-nextjs-landing-page-template-with-tailwind-css-headless-ui'
-          }
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target='_blank'
-          className='hidden lg:block bg-primary text-white hover:bg-primary/15 hover:text-primary text-sm font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap'>
-          Download Now
+          aria-label={t('cta_whatsapp') as string}
+          className='hidden lg:inline-flex items-center gap-2 bg-primary text-white hover:bg-secondary text-sm font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap'>
+          <Icon icon='mdi:whatsapp' className='text-lg' />
+          <span>{t('cta_whatsapp')}</span>
         </Link>
         {isVisible && (
           <div
