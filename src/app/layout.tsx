@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
+import path from 'path'
+import { promises as fs } from 'fs'
 import './globals.css'
 import Aoscompo from '@/lib/utils/aos'
 import Analytics from './analytics/Analytics'
@@ -9,23 +11,40 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer'
 const font = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt'),
-  title: 'Frota360',
-  icons: {
-    icon: '/logo-64-branca.png',
-    shortcut: '/logo-64-branca.png',
-    apple: '/logo-64-branca.png',
-  },
-  description: 'Gestão TVDE white‑label completa: Website, App do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.',
-  openGraph: {
-    title: 'Frota360 — Gestão TVDE completa',
-    description: 'Website, App do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt',
-    siteName: 'Frota360',
-    images: ['/logo-64-branca.png'],
-    type: 'website',
-  },
+// Root fallback metadata: reads default locale (pt) SEO so title/description never render empty on "/"
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const locale = 'pt'
+    const file = path.join(process.cwd(), 'public', 'locales', locale, 'common.json')
+    const raw = await fs.readFile(file, 'utf-8')
+    const json = JSON.parse(raw)
+    const brand: string = json?.brand || 'Frota360'
+    const title: string = json?.seo?.title || brand
+    const description: string = json?.seo?.description || 'Gestão TVDE white‑label completa.'
+    const iconPath: string = typeof json?.seo?.icon === 'string' && json.seo.icon ? json.seo.icon : '/logo-64-branca.png'
+    return {
+      metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt'),
+      applicationName: brand,
+      title,
+      description,
+      icons: {
+        icon: iconPath,
+        shortcut: iconPath,
+        apple: iconPath,
+      },
+    }
+  } catch {
+    return {
+      metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt'),
+      title: 'Frota360',
+      description: 'Gestão TVDE white‑label completa.',
+      icons: {
+        icon: '/logo-64-branca.png',
+        shortcut: '/logo-64-branca.png',
+        apple: '/logo-64-branca.png',
+      },
+    }
+  }
 }
 
 export default function RootLayout({
@@ -34,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='pt' suppressHydrationWarning>
+  <html lang='pt' suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo-64-branca.png" />
         <link rel="apple-touch-icon" href="/logo-64-branca.png" />

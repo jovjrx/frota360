@@ -8,6 +8,10 @@ const Banner = () => {
   const parts = rawTitle.split(',')
   const first = parts[0]?.trim() || rawTitle
   const second = parts.slice(1).join(',').trim()
+  const badges = (t('trust_badges', { returnObjects: true }) as any) || []
+  const heroBadges: string[] = Array.isArray(badges) && badges.length
+    ? (badges as string[]).slice(0, 4)
+    : ['White‑label', 'Site + Acesso + Painel', 'Seguro e conforme', 'Integrações']
 
   return (
     <section className='relative bg-[#0C193C] min-h-[75vh] md:max-h-[80vh] pb-6 md:pb-0' id='home-section'>
@@ -27,6 +31,23 @@ const Banner = () => {
                     </>
                   ) : null}
                 </h1>
+                {/* Colored hero badges under the highlighted title */}
+                <div className='mb-4 flex flex-wrap items-center justify-center lg:justify-start gap-2'>
+                  {heroBadges.map((b, i) => {
+                    const grad = i % 4 === 0
+                      ? 'from-primary to-secondary'
+                      : i % 4 === 1
+                      ? 'from-emerald-500 to-green-400'
+                      : i % 4 === 2
+                      ? 'from-blue-500 to-cyan-400'
+                      : 'from-amber-400 to-yellow-500'
+                    return (
+                      <span key={i} className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] leading-none text-white bg-gradient-to-r ${grad}`}>
+                        {b}
+                      </span>
+                    )
+                  })}
+                </div>
                 <p className='text-white/90 text-base md:text-lg font-normal mb-8 max-w-[80%] lg:text-start text-center lg:mx-0 mx-auto'>
                   {t('hero_subtitle')}
                 </p>
@@ -51,6 +72,7 @@ const Banner = () => {
                     {t('request_demo')}
                   </a>
                 </div>
+                {/* Brandline removed per request; moved to footer */}
               </div>
               <div className='lg:col-span-5 overflow-hidden flex items-center justify-center bg-[#0C193C] rounded-xl h-full relative' data-aos='fade-up' data-aos-duration='700' data-aos-delay='150'>
                 <video

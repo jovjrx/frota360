@@ -31,7 +31,19 @@ const Footer = () => {
       <div className='container relative z-10 pb-16'>
           <div className='grid grid-cols-1 gap-y-10 md:gap-x-16 sm:grid-cols-2 lg:grid-cols-12 xl:gap-x-8'>
           <div className='lg:col-span-8 sm:col-span-2'>
-            <Image src='/logo-horizontal-branca.png' alt='Frota360' width={180} height={40} className='h-10 w-auto mb-4' />
+            <div className='flex items-center gap-4 mb-4'>
+              <Image src='/logo-horizontal-branca.png' alt='Frota360' width={180} height={40} className='h-10 w-auto' />
+              <Link href={'https://alvoradamagistral.eu'} target='_blank' rel='noopener noreferrer' className='inline-flex items-center'>
+                <Image
+                  src='/logos/alvorada.png'
+                  alt='Alvorada Magistral'
+                  width={160}
+                  height={40}
+                  className='h-10 w-auto filter invert brightness-0'
+                />
+                <span className='sr-only'>Alvorada Magistral</span>
+              </Link>
+            </div>
             <p className='text-white/60 text-xs font-normal max-w-2xl leading-6 mb-1'>
               {t('copyright')}
             </p>

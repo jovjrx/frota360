@@ -60,12 +60,14 @@ const ContactForm = () => {
           setSubmitted(true)
           setShowThanks(true)
           reset()
-
+          setLoader(false)
           setTimeout(() => {
             setShowThanks(false)
           }, 5000)
         }
-
+        if (!data.ok) {
+          setLoader(false)
+        }
         reset()
       })
       .catch((error) => {
@@ -89,7 +91,7 @@ const ContactForm = () => {
             <form
               onSubmit={handleSubmit}
               className='flex flex-wrap w-full m-auto justify-between'>
-              <div className='sm:flex gap-6 w-full'>
+              <div className='w-full'>
                 <div className='mx-0 my-2.5 flex-1'>
                   <label
                     htmlFor='name'
@@ -102,11 +104,11 @@ const ContactForm = () => {
                     name='name'
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder=''
+                    placeholder={(t('form.placeholders.name') as string) || ''}
+                    required
                     className='w-full text-base px-4 rounded-2xl py-2.5 border-lightblue/35 border transition-all duration-500 focus:border-primary focus:outline-0 placeholder:text-lightsky/40 text-white'
                   />
                 </div>
-                <div className='mx-0 my-2.5 flex-1'></div>
               </div>
               <div className='sm:flex gap-6 w-full'>
                 <div className='mx-0 my-2.5 flex-1'>
@@ -121,7 +123,8 @@ const ContactForm = () => {
                     name='email'
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder='you@email.com'
+                    placeholder={(t('form.placeholders.email') as string) || ''}
+                    required
                     className='w-full text-base px-4 rounded-2xl py-2.5 border-lightblue/35 border transition-all duration-500 focus:border-primary focus:outline-0 placeholder:text-lightsky/40 text-white'
                   />
                 </div>
@@ -135,7 +138,7 @@ const ContactForm = () => {
                     id='phone'
                     type='tel'
                     name='phone'
-                    placeholder='WhatsApp'
+                    placeholder={(t('form.placeholders.phone') as string) || ''}
                     value={formData.phone}
                     onChange={handleChange}
                     className='w-full text-base px-4 rounded-2xl py-2.5 border-lightblue/35 border transition-all duration-500 focus:border-primary focus:outline-0 placeholder:text-lightsky/40 text-white'
@@ -153,6 +156,7 @@ const ContactForm = () => {
                     name='company'
                     value={formData.company}
                     onChange={handleChange}
+                    placeholder={(t('form.placeholders.company') as string) || ''}
                     className='w-full text-base px-4 rounded-2xl py-2.5 border-lightblue/35 border transition-all duration-500 focus:border-primary focus:outline-0 placeholder:text-lightsky/40 text-white'
                   />
                 </div>
@@ -189,7 +193,8 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className='w-full mt-2 rounded-2xl px-5 py-3 border-lightblue/35 border transition-all duration-500 focus:border-primary focus:outline-0 placeholder:text-lightsky/40 text-white'
-                  placeholder=''></textarea>
+                  placeholder={(t('form.placeholders.message') as string) || ''}
+                  required></textarea>
               </div>
               <div className='mx-0 my-2.5 w-full'>
                 <button

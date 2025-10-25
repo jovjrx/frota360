@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import Banner from "./components/home/hero";
 import Why from "./components/home/why";
 import Modules from "./components/home/modules";
@@ -9,10 +8,6 @@ import Security from "./components/home/security";
 import FinalCTA from "./components/home/final-cta";
 import ContactForm from "./components/ContactForm";
 import Integrations from "./components/home/integrations";
-
-export const metadata: Metadata = {
-  title: "Frota360",
-};
 
 export default function Home() {
   return (

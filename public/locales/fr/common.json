@@ -78,12 +78,31 @@
     "submit": "Envoyer",
     "close": "Fermer",
     "success": "Merci ! Nous vous répondrons bientôt.",
-    "error": "Envoi impossible. Veuillez réessayer."
+    "error": "Envoi impossible. Veuillez réessayer.",
+    "placeholders": {
+      "name": "Votre nom",
+      "email": "vous@email.com",
+      "phone": "WhatsApp / Téléphone",
+      "company": "Nom de l’entreprise (optionnel)",
+      "message": "Parlez‑nous de votre activité"
+    }
   }
   ,
   "seo": {
     "title": "Frota360 – Gestion TVDE complète pour flottes et chauffeurs",
-    "description": "Tout-en-un pour TVDE : site web, tableaux de bord chauffeur et manager, intégrations (Uber, Bolt, MyPrio, Via Verde), KPI, rapports et sécurité. Demandez une démo."
+    "description": "Tout-en-un pour TVDE : site web, tableaux de bord chauffeur et manager, intégrations (Uber, Bolt, MyPrio, Via Verde), KPI, rapports et sécurité. Demandez une démo.",
+    "keywords": [
+      "TVDE",
+      "Gestion de flotte",
+      "White‑label",
+      "Uber",
+      "Bolt",
+      "MyPRIO",
+      "Via Verde",
+      "Rapports",
+      "KPI",
+      "Paiements"
+    ]
   },
   "value": {
     "title": "Gestion TVDE complète prête à évoluer",

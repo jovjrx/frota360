@@ -19,8 +19,8 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     setNavLink([
-      { label: t('menu_comparison'), href: '/#why-section' },
-      { label: t('benefits'), href: '/#features-section' },
+      { label: t('menu_comparison'), href: '/#comparacao' },
+      { label: t('benefits'), href: '/#recursos' },
       { label: t('footer_contact'), href: '/#contact' },
     ])
   }, [t])

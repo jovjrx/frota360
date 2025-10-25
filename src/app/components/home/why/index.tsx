@@ -58,7 +58,7 @@ export default function Why() {
   const rows: Array<{ feature: string; spreadsheet: boolean; frota360: boolean }> = Array.isArray(compare?.rows) && compare.rows.length ? compare.rows : defaultRows
 
   return (
-    <section id='why-section' className='scroll-mt-20 bg-[#0C193C]'>
+    <section id='comparacao' className='scroll-mt-20 bg-[#0C193C]'>
       <div className='container'>
         <div className='text-center mb-8'>
           <h2 className='font-semibold text-3xl'>{title}</h2>
