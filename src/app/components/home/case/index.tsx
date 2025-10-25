@@ -10,6 +10,10 @@ export default function CaseStudy() {
   const metrics = (t('success.metrics', { returnObjects: true }) as any) || []
   const list: string[] = Array.isArray(metrics) ? metrics : []
   const cta = (t('success.cta') as string) || 'Visitar site'
+  const parsed = list.map((s) => {
+    const [first, ...rest] = String(s).split(' ')
+    return { value: first || s, label: rest.join(' ') }
+  })
 
   return (
     <section id='case-section' className='scroll-mt-20 relative bg-[#13224F]'>
@@ -31,15 +35,23 @@ export default function CaseStudy() {
             </a>
             <div className='flex-1'>
               {summary ? <p className='text-white mb-4'>{summary}</p> : null}
-              {!!list.length && (
-                <ul className='flex flex-wrap gap-2.5 mb-4'>
-                  {list.map((m, i) => (
-                    <li key={i} className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-[#0C193C] text-sm shadow-sm ring-1 ring-[#0C193C]/10'>
-                      <Icon icon='mdi:check-circle' className='text-[#0C193C] text-base' />
-                      <span>{m}</span>
-                    </li>
+              {!!parsed.length && (
+                <div className='grid grid-cols-2 md:grid-cols-3 gap-3 mb-5'>
+                  {parsed.map((m, i) => (
+                    <div
+                      key={i}
+                      className='rounded-lg bg-white text-[#0C193C] px-4 py-3 shadow-sm ring-1 ring-[#0C193C]/10'
+                    >
+                      <div className='flex items-center gap-2 mb-1'>
+                        <Icon icon='mdi:trending-up' className='text-[#0C193C] text-lg' />
+                        <span className='text-2xl font-semibold leading-none'>{m.value}</span>
+                      </div>
+                      {m.label ? (
+                        <div className='text-xs leading-snug opacity-90'>{m.label}</div>
+                      ) : null}
+                    </div>
                   ))}
-                </ul>
+                </div>
               )}
               <div>
                 <a

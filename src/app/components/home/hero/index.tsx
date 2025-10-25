@@ -52,7 +52,7 @@ const Banner = () => {
                   </a>
                 </div>
               </div>
-              <div className='lg:col-span-5 overflow-hidden flex items-center justify-center bg-[#0C193C] rounded-xl h-full' data-aos='fade-up' data-aos-duration='700' data-aos-delay='150'>
+              <div className='lg:col-span-5 overflow-hidden flex items-center justify-center bg-[#0C193C] rounded-xl h-full relative' data-aos='fade-up' data-aos-duration='700' data-aos-delay='150'>
                 <video
                   className='w-auto h-full max-w-full object-contain rounded-xl bg-[#0C193C]'
                   autoPlay
@@ -65,9 +65,12 @@ const Banner = () => {
                   <source src='/mockup.mp4' type='video/mp4' />
                   <img src='/mockup.png' alt='Frota360 mockup' className='w-full h-auto' />
                 </video>
+                {/* Subtle moving overlay over the video to keep background consistent */}
+                <div className='pointer-events-none absolute inset-0 rounded-xl mix-blend-soft-light opacity-25 bg-[conic-gradient(at_50%_50%,rgba(255,255,255,0.08)_0deg,rgba(255,255,255,0)_120deg,rgba(255,255,255,0.08)_240deg,rgba(255,255,255,0)_360deg)] animate-[spin_22s_linear_infinite]'></div>
               </div>
             </div>
           </div>
+          {/* Removed shimmer bar; effect moved over video for a seamless background */}
         </div>
       </div>
       {/* Glow effect background */}

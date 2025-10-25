@@ -32,7 +32,13 @@ export default function Integrations() {
         <div>
           <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4'>
             {LOGOS.map((l, i) => (
-              <div key={i} className='rounded-xl px-4 py-3 flex items-center justify-center bg-white shadow'>
+              <div
+                key={i}
+                className='rounded-xl px-4 py-3 flex items-center justify-center bg-white shadow'
+                data-aos='fade-up'
+                data-aos-duration='600'
+                data-aos-delay={String(100 + (i % 6) * 100)}
+              >
                 <img src={l.src} alt={l.alt} className='h-10 md:h-12 w-auto object-contain' />
               </div>
             ))}
