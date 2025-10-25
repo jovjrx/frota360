@@ -1,5 +1,6 @@
 "use client"
 import { useTranslations } from '@/app/hooks/useTranslations'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 export default function CaseStudy() {
   const { t } = useTranslations('common')
@@ -31,10 +32,11 @@ export default function CaseStudy() {
             <div className='flex-1'>
               {summary ? <p className='text-white mb-4'>{summary}</p> : null}
               {!!list.length && (
-                <ul className='flex flex-wrap gap-2 mb-4'>
+                <ul className='flex flex-wrap gap-2.5 mb-4'>
                   {list.map((m, i) => (
-                    <li key={i} className='px-3 py-1 rounded-full bg-white text-[#0C193C] text-sm'>
-                      {m}
+                    <li key={i} className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-[#0C193C] text-sm shadow-sm ring-1 ring-[#0C193C]/10'>
+                      <Icon icon='mdi:check-circle' className='text-[#0C193C] text-base' />
+                      <span>{m}</span>
                     </li>
                   ))}
                 </ul>
@@ -44,9 +46,25 @@ export default function CaseStudy() {
                   href='https://conduz.pt'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-[#0C193C]'
+                  aria-label={`${cta} - Conduz.pt`}
+                  onClick={() => {
+                    try {
+                      // @ts-ignore
+                      if (typeof window !== 'undefined' && window.gtag) {
+                        // @ts-ignore
+                        window.gtag('event', 'case_visit_click', { location: 'case', brand: 'conduz' })
+                      }
+                      // @ts-ignore
+                      if (typeof window !== 'undefined' && window.fbq) {
+                        // @ts-ignore
+                        window.fbq('trackCustom', 'CaseVisitClick', { location: 'case', brand: 'conduz' })
+                      }
+                    } catch (_) {}
+                  }}
+                  className='inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-[#0C193C] shadow-sm ring-1 ring-white/30 hover:bg-white/90 hover:shadow transition'
                 >
-                  {cta}
+                  <span>{cta}</span>
+                  <Icon icon='mdi:open-in-new' className='text-lg' />
                 </a>
               </div>
             </div>

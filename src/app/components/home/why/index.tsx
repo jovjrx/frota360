@@ -65,7 +65,7 @@ export default function Why() {
           {subtitle ? <p className='text-white/70 mt-2'>{subtitle}</p> : null}
         </div>
         {!!cards.length && (
-          <div className='grid md:grid-cols-2 gap-6 mb-10 max-w-6xl mx-auto'>
+          <div className='grid md:grid-cols-2 gap-6 mb-10 mx-auto'>
             {cards.map((c, i) => (
               <FeatureRowCard
                 key={i}
