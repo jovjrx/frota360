@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt'),
   title: 'Frota360',
   icons: {
-    icon: '/logo-64-branco.png',
-    shortcut: '/logo-64-branco.png',
-    apple: '/logo-64-branco.png',
+    icon: '/logo-64-branca.png',
+    shortcut: '/logo-64-branca.png',
+    apple: '/logo-64-branca.png',
   },
   description: 'Gestão TVDE white‑label completa: Website, App do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.',
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'Website, App do Motorista e Painel do Gestor — com a sua marca, integrações e segurança.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt',
     siteName: 'Frota360',
-    images: ['/logo-64-branco.png'],
+    images: ['/logo-64-branca.png'],
     type: 'website',
   },
 }
@@ -36,8 +36,8 @@ export default function RootLayout({
   return (
     <html lang='pt' suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/logo-64-branco.png" />
-        <link rel="apple-touch-icon" href="/logo-64-branco.png" />
+        <link rel="icon" href="/logo-64-branca.png" />
+        <link rel="apple-touch-icon" href="/logo-64-branca.png" />
       </head>
       <body className={`${font.className}`}>
         <Aoscompo>
@@ -87,7 +87,7 @@ export default function RootLayout({
           '@type': 'Organization',
           name: 'Frota360',
           url: process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt',
-          logo: (process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt') + '/logo-64-branco.png'
+          logo: (process.env.NEXT_PUBLIC_SITE_URL || 'https://frota360.pt') + '/logo-64-branca.png'
         })}</Script>
         <ScrollToTop />
       </body>

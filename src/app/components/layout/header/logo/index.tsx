@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
         alt="Frota360"
         width={170}
         height={60}
-        className="h-12 w-auto"
+        className="h-16 w-auto"
         quality={100}
         priority
       />

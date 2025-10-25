@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale?: 
         description,
         url: `${base}/${locale}`,
         siteName: 'Frota360',
-        images: ['/logo-64-branco.png'],
+        images: ['/logo-64-branca.png'],
         type: 'website',
       },
       alternates: { languages },

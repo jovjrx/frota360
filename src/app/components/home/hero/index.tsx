@@ -39,6 +39,13 @@ const Banner = () => {
                     {t('request_demo')}
                   </a>
                 </div>
+                {/* Partner badges (native colors, unified size) */}
+                <div className='mt-6 flex flex-wrap items-center gap-6 justify-center lg:justify-start' aria-label='Parceiros e integrações'>
+                  <img src='/logos/uber.svg' alt='Uber' className='h-6 md:h-7 w-auto object-contain' />
+                  <img src='/logos/bolt.svg' alt='Bolt' className='h-6 md:h-7 w-auto object-contain' />
+                  <img src='/logos/myprio.svg' alt='MyPrio' className='h-6 md:h-7 w-auto object-contain' />
+                  <img src='/logos/viaverde.svg' alt='Via Verde' className='h-6 md:h-7 w-auto object-contain' />
+                </div>
               </div>
               <div className='lg:col-span-5 overflow-hidden flex items-center justify-center bg-[#0C193C] rounded-xl h-full' data-aos='fade-up' data-aos-duration='700' data-aos-delay='150'>
                 <video
